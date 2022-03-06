@@ -7,6 +7,7 @@ export const useGetTLOSAccount = () => {
   const [url, setURL] = React.useState('https://telos.caleos.io/v2/state/get_account?account=richpoweidos');
  
   const letsSearch = () => {
+      if(accountName === data.account.account_name)return;
       setLoadingAccount(true);
       setURL(`https://telos.caleos.io/v2/state/get_account?account=${accountName}`)
   }
