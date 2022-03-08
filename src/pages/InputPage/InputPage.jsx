@@ -19,6 +19,7 @@ export const InputPage = () => {
         value={accountName}
       />
       <button onClick={letsSearch}>NEXT</button>
+      <h1>haciendo el primer cambio en una nueva rama</h1>
       <h1>
         {loadingAccount === false ? data.account.account_name : "loading..."}
       </h1>
