@@ -1,6 +1,8 @@
 import React from "react";
 import styles from './InputPage.module.css';
 import { useGetTLOSAccount } from "../../hooks/useGetTLOSAccount";
+import Chip from '@mui/material/Chip';
+import Stack from '@mui/material/Stack';
 
 export const InputPage = () => {
   const { 
@@ -20,6 +22,12 @@ export const InputPage = () => {
       />
       <button onClick={letsSearch}>NEXT</button>
       <h1>haciendo el primer cambio en una nueva rama</h1>
+      <h2>probando material IU</h2>
+      <Stack direction="row" spacing={1}>
+        <Chip label="Chip Filled" />
+        <Chip label="Chip Outlined" variant="outlined" />
+      </Stack>
+
       <h1>
         {loadingAccount === false ? data.account.account_name : "loading..."}
       </h1>
