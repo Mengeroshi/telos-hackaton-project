@@ -3,7 +3,7 @@ export const Home  = () =>{
 
     return(
         <main>
-            home
+            <h1>home</h1>
         </main>
     )
 }
