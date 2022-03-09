@@ -1,0 +1,35 @@
+.Nav{
+  background: crimson;
+  border: 10px solid #4ea58b;
+}
+
+.EstiloPrecio{
+  background: rgb(255, 255, 255);
+  border: 2px solid #1a1b1b;
+  margin-top: 20px;
+}
+
+.EstiloGrafi{
+  background: rgb(255, 255, 255);
+  border-radius: 15px;
+  box-shadow: 1px 1px 5px black;
+  padding: 20px;
+  height: 50vh;
+  margin-bottom: 20px;
+}
+
+.EstiloTabla{
+  background: rgb(255, 255, 255);
+  border-radius: 15px;
+  box-shadow: 1px 1px 5px black;
+  padding: 20px;
+  height: 50vh;
+}
+
+.EstiloToken{
+  background: rgb(255, 255, 255);
+  border-radius: 15px;
+  box-shadow: 1px 1px 5px black;
+  padding: 20px;
+  height: 100%;
+}
