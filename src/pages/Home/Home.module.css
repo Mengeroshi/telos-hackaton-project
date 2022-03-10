@@ -1,0 +1,40 @@
+.EstiloPrecio{
+  margin-top: 20px;
+  font-size: 32px;
+}
+
+.EstiloGrafi{
+  background: rgb(255, 255, 255);
+  border-radius: 15px;
+  box-shadow: 1px 1px 5px black;
+  padding: 20px;
+  height: auto;
+  margin-bottom: 20px;
+}
+
+.EstiloTabla{
+  background: rgb(255, 255, 255);
+  border-radius: 15px;
+  box-shadow: 1px 1px 5px black;
+  padding: 20px;
+  height: auto;
+}
+
+.EstiloToken{
+  background: rgb(255, 255, 255);
+  border-radius: 15px;
+  box-shadow: 1px 1px 5px black;
+  padding: 20px;
+  margin-bottom: 20px;
+  height: 95%;
+}
+
+.Estilofooter{
+  background: rgb(123, 39, 172);
+  width: 100%;
+  height: 30vh;
+}
+
+.FoooterContent{
+  padding: 20px;
+}
