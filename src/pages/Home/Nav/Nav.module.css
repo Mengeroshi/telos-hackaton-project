@@ -1,3 +1,8 @@
-.Navcolor{
-  background: rgb(123, 39, 172);
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px;
+  background-color: rgb(123, 39, 172);
+  color: #fff;
 }
