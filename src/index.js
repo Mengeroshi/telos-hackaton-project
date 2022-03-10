@@ -6,7 +6,7 @@ import {InputPage} from './pages/InputPage/InputPage.jsx';
 
 ReactDOM.render(
   <React.StrictMode>
-    <Home />
+    <InputPage />
   </React.StrictMode>,
   document.getElementById('root')
 );
