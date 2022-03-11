@@ -2,13 +2,14 @@ import React from "react";
 import styles from "./InputPage.module.css";
 import { useGetTLOSAccount } from "../../hooks/useGetTLOSAccount";
 
-import SearchIcon from "@mui/icons-material/Search";
 import Typography from "@mui/material/Typography";
-import Grid from "@mui/material/Grid";
+import InputSearch from "../../components/InputSearch/InputSearch.jsx";
 
 export const InputPage = () => {
   const { data, accountName, loadingAccount, setAccountName, letsSearch } =
     useGetTLOSAccount();
+
+  const texto = "Token TELOS";
 
   return (
     <main className={styles.lienzo}>
@@ -16,21 +17,14 @@ export const InputPage = () => {
         <div className={styles.header}>NameApp</div>
 
         <div className={styles.content}>
-
           <div className={styles.logo}>LOGO</div>
 
-          <div className={styles.searchBox}>
-            <button className={styles.btnSearch} onClick={letsSearch}>
-              <SearchIcon />
-            </button>
-            <input
-              type="text"
-              className={styles.inputSearch}
-              placeholder="Token TELOS"
-              onChange={(e) => setAccountName(e.target.value)}
-              value={accountName}
-            />
-          </div>
+          <InputSearch
+            texto={texto}
+            boton={letsSearch}
+            valor={accountName}
+            change={setAccountName}
+          />
 
           <Typography
             sx={{ fontSize: 25 }}
@@ -45,8 +39,12 @@ export const InputPage = () => {
         </div>
 
         <div className={styles.pie}>
-          <div><p>About NameApp</p></div>
-          <div><p>Privacity | Terms</p></div>
+          <div>
+            <p>About NameApp</p>
+          </div>
+          <div>
+            <p>Privacity | Terms</p>
+          </div>
         </div>
       </div>
     </main>
