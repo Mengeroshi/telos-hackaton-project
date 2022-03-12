@@ -9,7 +9,6 @@ export const InputPage = () => {
   const { data, accountName, loadingAccount, setAccountName, letsSearch } =
     useGetTLOSAccount();
 
-  const texto = "Token TELOS";
 
   return (
     <main className={styles.lienzo}>
@@ -20,10 +19,10 @@ export const InputPage = () => {
           <div className={styles.logo}>LOGO</div>
 
           <InputSearch
-            texto={texto}
-            boton={letsSearch}
-            valor={accountName}
-            change={setAccountName}
+            placeholder={"Telos Username"}
+            onClick={letsSearch}
+            value={accountName}
+            onChange={setAccountName}
           />
 
           <Typography
