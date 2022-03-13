@@ -1,13 +1,23 @@
 import React from "react";
+import { ContextApp } from "../../context/Context";
 import styles from "./InputPage.module.css";
-import { useGetTLOSAccount } from "../../hooks/useGetTLOSAccount";
-
 import Typography from "@mui/material/Typography";
 import InputSearch from "../../components/InputSearch/InputSearch.jsx";
 
 export const InputPage = () => {
-  const { data, accountName, loadingAccount, setAccountName, letsSearch } =
-    useGetTLOSAccount();
+  const [state, dispatch] = React.useContext(ContextApp);
+  const { accountName, data, loadingAccount } = state;
+
+  const onHandleChange = (e) => {
+    console.log(e);
+
+    dispatch({ type: "WRITE_ACCOUNT_NAME", payload: e });
+  };
+
+  const onHandleClick = () => {
+    if(!accountName)return;
+    dispatch({ type: "SET_SEARCH" })
+}
 
 
   return (
@@ -20,9 +30,9 @@ export const InputPage = () => {
 
           <InputSearch
             placeholder={"Telos Username"}
-            onClick={letsSearch}
+            onClick={onHandleClick}
             value={accountName}
-            onChange={setAccountName}
+            onChange={(e) => onHandleChange(e)}
           />
 
           <Typography
@@ -31,7 +41,8 @@ export const InputPage = () => {
             paddingTop="20px"
             gutterBottom
           >
-            {loadingAccount === false
+            {
+            loadingAccount === false
               ? data.account.account_name
               : "loading..."}
           </Typography>
