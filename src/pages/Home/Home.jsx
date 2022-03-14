@@ -4,7 +4,7 @@ import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
 import Container from "@mui/material/Container";
 //--
-import Grafico from "../../components/Grafica/Grafico.jsx";
+import {LineChart} from '../../components/LineChart/LineChart';
 import Navbar from "../../components/Nav/Navbar.jsx";
 import Tablas from "../../components/Table/Tabla.jsx";
 
@@ -26,7 +26,7 @@ export const Home = () => {
 
             <Grid item xs={12} sm={12} md={8} lg={8} xl={8}>
               <div className={styles.EstiloGrafi}>
-                <Grafico></Grafico>
+                <LineChart/>
               </div>
               <div className={styles.EstiloTabla}>
                 <Tablas />
