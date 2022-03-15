@@ -3,8 +3,8 @@ import styles from "./Home.module.css";
 import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
 import Container from "@mui/material/Container";
-//--
 import {LineChart} from '../../components/LineChart/LineChart';
+import { DoughnutChart } from "../../components/DoughnutChart/DoughnutChart";
 import Navbar from "../../components/Nav/Navbar.jsx";
 import Tablas from "../../components/Table/Tabla.jsx";
 
@@ -34,7 +34,9 @@ export const Home = () => {
             </Grid>
 
             <Grid item xs={12} sm={12} md={4} lg={4} xl={4}>
-              <div className={styles.EstiloToken}>Contenedor3</div>
+              <div className={styles.EstiloToken}>
+                <DoughnutChart/>
+              </div>
             </Grid>
           </Grid>
         </Box>
