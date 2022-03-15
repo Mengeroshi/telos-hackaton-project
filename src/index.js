@@ -8,7 +8,7 @@ import {ContextProvider} from  './context/Context.jsx';
 ReactDOM.render(
   <React.StrictMode>
     <ContextProvider>
-      <InputPage />
+      <Home />
     </ContextProvider>
   </React.StrictMode>,
   document.getElementById('root')
