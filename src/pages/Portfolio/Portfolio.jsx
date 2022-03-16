@@ -1,5 +1,5 @@
 import React from "react";
-import styles from "./Home.module.css";
+import styles from "./Portfolio.module.css";
 import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
 import Container from "@mui/material/Container";
@@ -8,7 +8,7 @@ import { DoughnutChart } from "../../components/DoughnutChart/DoughnutChart";
 import Navbar from "../../components/Nav/Navbar.jsx";
 import Tablas from "../../components/Table/Tabla.jsx";
 
-export const Home = () => {
+export const Portfolio= () => {
   return (
     <main>
       <div>
