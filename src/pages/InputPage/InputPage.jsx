@@ -39,7 +39,7 @@ export const InputPage = () => {
           />
 
           <Typography
-            sx={{ fontSize: 25 }}
+            sx={{ fontSize: 18 }}
             color="white"
             paddingTop="20px"
             gutterBottom
