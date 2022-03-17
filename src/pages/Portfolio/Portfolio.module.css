@@ -20,21 +20,37 @@
   height: auto;
 }
 
+.EstiloTokenGrafi{
+  background: rgb(255, 255, 255);
+  border-radius: 15px;
+  box-shadow: 1px 1px 5px black;
+  padding: 20px;
+  height: 528px;
+  margin-bottom: 20px;
+}
+
 .EstiloToken{
   background: rgb(255, 255, 255);
   border-radius: 15px;
   box-shadow: 1px 1px 5px black;
   padding: 20px;
   margin-bottom: 20px;
-  height: 100%;
+  height: 558px;
 }
 
 .Estilofooter{
-  background: rgb(123, 39, 172);
   width: 100%;
-  height: 30vh;
+  height: auto;
 }
 
 .FoooterContent{
   padding: 20px;
 }
+
+.prueba{
+  font-family: 'Space Mono';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 25px;
+}
+

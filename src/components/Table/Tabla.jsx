@@ -46,8 +46,8 @@ const rows = [
 
 export default function DataGridDemo() {
   return (
-    <div style={{ height: 430, width: "100%"}}>
-      <div style={{ height: 350, width: "100%" }}>
+    <div style={{ height: 440, width: "100%"}}>
+      <div style={{ height: 360, width: "100%" }}>
         <DataGrid
           rows={rows}
           columns={columns}
