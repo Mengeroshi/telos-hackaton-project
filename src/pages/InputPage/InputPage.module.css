@@ -1,5 +1,5 @@
 .lienzo {
-  background-color: rgb(123, 39, 172);
+  background: var(--bg);
   height: 100vh;
   color: aliceblue;
 }
@@ -9,7 +9,7 @@
 }
 
 .header {
-    color: #fff;
+    color: var(--pinkContrast);
 }
 
 .content {
@@ -31,3 +31,4 @@
   display: flex;
   justify-content: space-between;
 }
+
