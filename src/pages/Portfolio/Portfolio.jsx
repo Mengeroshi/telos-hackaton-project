@@ -34,7 +34,7 @@ const elements = [
 
 export const Portfolio = () => {
   return (
-    <main className={styles.prueba}>
+    <main>
       <div>
         <Navbar />
       </div>

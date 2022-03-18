@@ -1,17 +1,9 @@
 body {
-  
-  
   background: var(--bg);
-
-  
-
+  background-repeat: no-repeat;
+  background-attachment: fixed;
   color: #fff;
   font-family: var(--tipografia);
-}
-
-.prueba{
-  
-  
 }
 
 .Titulos {
