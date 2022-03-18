@@ -43,11 +43,19 @@ export const Portfolio = () => {
         <div>
           <Box sx={{ height: "100vh", marginBottom: "300px" }}>
             <Grid container spacing={2}>
-              <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
-                <div className={styles.EstiloPrecio}>
-                  <span>Portfolio</span>
-                  <p>$1,000,000.00 USD</p>
-                </div>
+
+              <Grid container className={styles.EstiloPrecio}>
+                <Grid item xs={10} sm={10} md={10} lg={10} xl={10}>
+                  <div>
+                    <span>Portfolio</span>
+                    <p>$1,000,000.00 USD</p>
+                  </div>
+                </Grid>
+                <Grid item xs={2} sm={2} md={2} lg={2} xl={2}>
+                  <div className={styles.EstiloAdd}>
+                    <span>Address</span>
+                  </div>
+                </Grid>
               </Grid>
 
               <Grid item xs={12} sm={12} md={8} lg={8} xl={8}>
@@ -82,7 +90,7 @@ export const Portfolio = () => {
                 </div>
               </Grid>
 
-              <Grid container spacing={2}>
+              <Grid container className={styles.EstiloFooter}>
                 <Grid
                   item
                   lg={9}
