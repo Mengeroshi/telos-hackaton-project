@@ -34,7 +34,7 @@ const elements = [
 
 export const Portfolio = () => {
   return (
-    <main>
+    <main className={styles.prueba}>
       <div>
         <Navbar />
       </div>
@@ -78,23 +78,30 @@ export const Portfolio = () => {
                     {elements.map((value, index) => {
                       return <p key={index}>{value}</p>;
                     })}
-
                   </div>
                 </div>
               </Grid>
 
-              <Box
-                className={styles.Estilofooter}
-                sx={{ display: { xs: "none", sm: "none", md: "block" } }}
-              >
-                <div>
+              <Grid container spacing={2}>
+                <Grid
+                  item
+                  lg={9}
+                  xl={9}
+                  sx={{ display: { xs: "none", sm: "none", md: "block" } }}
+                >
                   <p>About Squirrelfi</p>
                   <p>© 2022 Squirrelfi</p>
-                </div>
-                <div>
+                </Grid>
+                <Grid
+                  className={styles.AlingFooter}
+                  item
+                  lg={3}
+                  xl={3}
+                  sx={{ display: { xs: "none", sm: "none", md: "block" } }}
+                >
                   <p>Privacity | Terms</p>
-                </div>
-              </Box>
+                </Grid>
+              </Grid>
             </Grid>
           </Box>
         </div>
