@@ -1,7 +1,6 @@
 import React from 'react';
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
 import { Doughnut } from 'react-chartjs-2';
-import styles from "./DoughnutChart.module.css";
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
@@ -64,6 +63,6 @@ const options = {
 
 export const DoughnutChart = () =>{
     return(
-        <Doughnut data={data} options={options} className={styles.sizeGrafi}/>
+        <Doughnut data={data} options={options}/>
     )
 }

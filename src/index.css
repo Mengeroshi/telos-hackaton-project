@@ -3,6 +3,8 @@
   --bg:linear-gradient(180deg, #2A0944 0%, #A12568 100%);
   --pinkContrast: #FF4A76;
   --tipografia: SpaceMono;
+  --bgScroll: rgba(17, 14, 14, 0.527);
+  --bgScrollHover: #b3b3b3;
 
 }
 
