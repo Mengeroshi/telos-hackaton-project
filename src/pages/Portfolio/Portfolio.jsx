@@ -41,14 +41,14 @@ export const Portfolio = () => {
 
       <Container maxWidth="xlg">
         <div>
-          <Box sx={{ height: "100vh", marginBottom: "300px" }}>
-            <Grid container spacing={2}>
+          <Box sx={{ height: "100vh", marginBottom: "300px"}}>
+            <Grid container spacing={2} sx={{ display: "flex", justifyContent: "center" }}>
 
-              <Grid container className={styles.EstiloPrecio}>
+              <Grid container className={styles.EstiloPrecio} >
                 <Grid item xs={10} sm={10} md={10} lg={10} xl={10}>
                   <div>
                     <span>Portfolio</span>
-                    <p>$1,000,000.00 USD</p>
+                    <h1>$1,000,000.00 USD</h1>
                   </div>
                 </Grid>
                 <Grid item xs={2} sm={2} md={2} lg={2} xl={2}>
@@ -58,20 +58,19 @@ export const Portfolio = () => {
                 </Grid>
               </Grid>
 
-              <Grid item xs={12} sm={12} md={8} lg={8} xl={8}>
+              <Grid item xs={12} sm={12} md={7.5} lg={7.5} xl={8}>
                 <div className={styles.EstiloGrafi}>
-                  <p className={styles.Titulos}>TELOS</p>
                   <LineChart />
                 </div>
                 <div className={styles.EstiloTabla}>
-                  <p className={styles.Titulos}>Historial</p>
+                  <h2 className={styles.Titulos}>Historial</h2>
                   <Tablas />
                 </div>
               </Grid>
 
-              <Grid item xs={12} sm={12} md={4} lg={4} xl={4}>
+              <Grid item xs={12} sm={12} md={4.05} lg={4} xl={4}>
                 <div className={styles.EstiloTokenGrafi}>
-                  <p className={styles.Titulos}>Assets</p>
+                  {/* <p className={styles.Titulos}>Assets</p> */}
                   <div className={styles.SizeGrafi}>
                     <DoughnutChart />
                   </div>

@@ -37,7 +37,6 @@ body {
   backdrop-filter: blur(40px);
   border-radius: 15px;
   padding: 20px;
-  height: 520px;
   margin-bottom: 20px;
 }
 
@@ -51,7 +50,6 @@ body {
 }
 
 .SizeGrafi {
-  height: 420px;
   width: 100%;
   margin: 0 auto;
   display: block;
@@ -64,7 +62,6 @@ body {
   backdrop-filter: blur(40px);
   border-radius: 15px;
   padding: 20px;
-  height: 520px;
   margin-bottom: 20px;
 }
 
