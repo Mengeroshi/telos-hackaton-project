@@ -23,10 +23,13 @@ export const InputPage = () => {
   return (
     <main className={styles.lienzo}>
       <div className={styles.divPadre}>
-        <div className={styles.header}>NameApp</div>
+        <div className={styles.header}>
+          <div className={styles.mainLogo}></div>
+          <p className={styles.nameApp}>Squirrelfi</p>
+        </div>
 
         <div className={styles.content}>
-          <div className={styles.logo}>LOGO</div>
+          <div className={styles.logo}></div>
 
           <InputSearch
             placeholder={"Telos Username"}
@@ -36,7 +39,7 @@ export const InputPage = () => {
           />
 
           <Typography
-            sx={{ fontSize: 25 }}
+            sx={{ fontSize: 18 }}
             color="white"
             paddingTop="20px"
             gutterBottom
@@ -46,6 +49,8 @@ export const InputPage = () => {
               ? data.account.account_name
               : "loading..."}
           </Typography>
+
+          <p className={styles.leyenda}>Connect to your TELOS wallet with one click!</p>
         </div>
 
         <div className={styles.pie}>

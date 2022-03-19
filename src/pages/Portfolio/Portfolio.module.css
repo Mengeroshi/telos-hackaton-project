@@ -1,40 +1,136 @@
-.EstiloPrecio{
+body {
+  background: var(--bg);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  color: #fff;
+  font-family: var(--tipografia);
+}
+
+.Titulos {
+  font-style: normal;
+  font-weight: 700;
+  font-size: 25px;
+  color: var(--pinkContrast)
+}
+
+.EstiloPrecio {
   margin-top: 20px;
+  padding: 15px;
+  color: var(--pinkContrast)
+}
+
+.EstiloPrecio span{
+  font-size: 20px;
+}
+
+.EstiloAdd{
+  text-align: right;
+}
+
+.EstiloPrecio p{
   font-size: 32px;
 }
 
-.EstiloGrafi{
-  background: rgb(255, 255, 255);
+.EstiloGrafi {
+  background: rgba(245, 56, 158, 0.15);
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25), 0px 4px 4px rgba(0, 0, 0, 0.25);
+  backdrop-filter: blur(40px);
   border-radius: 15px;
-  box-shadow: 1px 1px 5px black;
-  padding: 20px;
-  height: auto;
-  margin-bottom: 20px;
-}
-
-.EstiloTabla{
-  background: rgb(255, 255, 255);
-  border-radius: 15px;
-  box-shadow: 1px 1px 5px black;
-  padding: 20px;
-  height: auto;
-}
-
-.EstiloToken{
-  background: rgb(255, 255, 255);
-  border-radius: 15px;
-  box-shadow: 1px 1px 5px black;
   padding: 20px;
   margin-bottom: 20px;
-  height: 100%;
 }
 
-.Estilofooter{
-  background: rgb(123, 39, 172);
+.EstiloTabla {
+  background: rgba(245, 56, 158, 0.15);
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25), 0px 4px 4px rgba(0, 0, 0, 0.25);
+  backdrop-filter: blur(40px);
+  border-radius: 15px;
+  padding: 20px;
+  height: 630px;
+}
+
+.SizeGrafi {
   width: 100%;
-  height: 30vh;
+  margin: 0 auto;
+  display: block;
+  overflow: auto;
 }
 
-.FoooterContent{
+.EstiloTokenGrafi {
+  background: rgba(245, 56, 158, 0.15);
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25), 0px 4px 4px rgba(0, 0, 0, 0.25);
+  backdrop-filter: blur(40px);
+  border-radius: 15px;
   padding: 20px;
+  margin-bottom: 20px;
+}
+
+.SizeToken {
+  height: 580px;
+  margin: 0 auto;
+  display: block;
+  overflow: auto;
+}
+
+.EstiloToken {
+  background: rgba(245, 56, 158, 0.15);
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25), 0px 4px 4px rgba(0, 0, 0, 0.25);
+  backdrop-filter: blur(40px);
+  border-radius: 15px;
+  padding: 20px;
+  margin-bottom: 20px;
+  height: 630px;
+}
+
+.EstiloFooter{
+  padding: 15px
+}
+
+.AlingFooter{
+  text-align: right;
+}
+
+.SizeToken::-webkit-scrollbar {
+  width: 8px;     /* Tamaño del scroll en vertical */
+  height: 8px;    /* Tamaño del scroll en horizontal */
+  display: block;  /* Ocultar scroll */
+}
+/* Ponemos un color de fondo y redondeamos las esquinas del thumb */
+.SizeToken::-webkit-scrollbar-thumb {
+  background: var(--bgScroll);
+  border-radius: 4px;
+}
+/* Cambiamos el fondo y agregamos una sombra cuando esté en hover */
+.SizeToken::-webkit-scrollbar-thumb:hover {
+  background: var(--bgScrollHover);
+  box-shadow: 0 0 2px 1px rgba(0, 0, 0, 0.2);
+}
+/* Cambiamos el fondo cuando esté en active */
+.SizeToken::-webkit-scrollbar-thumb:active {
+  background-color: var(--bgScroll);
+}
+
+/*######################*/
+
+.SizeGrafi::-webkit-scrollbar {
+  width: 8px;    
+  height: 8px;    
+  display: block;  
+}
+.SizeGrafi::-webkit-scrollbar-thumb {
+  background: var(--bgScroll);
+  border-radius: 4px;
+}
+.SizeGrafi::-webkit-scrollbar-thumb:hover {
+  background: var(--bgScrollHover);
+  box-shadow: 0 0 2px 1px rgba(0, 0, 0, 0.2);
+}
+.SizeGrafi::-webkit-scrollbar-thumb:active {
+  background-color: var(--bgScroll);
+}
+
+@media (max-width: 700px) {
+  .EstiloGrafi {
+    height: auto;
+  }
 }

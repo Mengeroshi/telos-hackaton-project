@@ -35,9 +35,9 @@ const data = {
 const options = {
     cutout: '80%',
     plugins: {
-  
       legend: {
         display: false,
+        
         labels: {
           font: {
             size: 100,
@@ -63,6 +63,6 @@ const options = {
 
 export const DoughnutChart = () =>{
     return(
-        <Doughnut data={data} options={options} />
+        <Doughnut data={data} options={options}/>
     )
 }

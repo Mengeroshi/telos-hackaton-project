@@ -1,15 +1,30 @@
 .lienzo {
-  background: var(--bg);
   height: 100vh;
   color: aliceblue;
+  font-family: var(--tipografia);
 }
 
 .divPadre {
   padding: 20px;
+  background: var(--bg);
 }
 
 .header {
-    color: var(--pinkContrast);
+  display: flex;
+}
+
+.mainLogo{
+  background-image: url("../../../public/logo.png");
+  background-repeat: no-repeat;
+  width: 50px;
+  height: 50px;
+}
+
+.nameApp{
+  color: var(--pinkContrast);
+  margin-left: 10px;
+  margin-top: 16px;
+  font-size: 20px;
 }
 
 .content {
@@ -22,12 +37,20 @@
 }
 
 .logo{
-    margin: 20px;
-    font-weight: bold;
+    background-image: url("../../../public/Vector.svg");
+    background-repeat: no-repeat;
+    width: 208px;
+    height: 224px;
+    margin-bottom: 25px;
+}
+
+.leyenda{
+  font-size: 25px;
+  font-weight: 400;
+  font-style: normal;
 }
 
 .pie {
-  padding-top: 20px;
   display: flex;
   justify-content: space-between;
 }
