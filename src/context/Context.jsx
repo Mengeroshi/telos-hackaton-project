@@ -5,8 +5,9 @@ export const ContextApp = React.createContext();
 const initialState = {
   accountName: "",
   data: { account: { account_name: "" } },
-  loadingAccount: true,
-  url: "",
+  loadingAccount: false,
+  url: "https://telos.caleos.io/v2/state/get_account?account=",
+  error: "",
 };
 
 const reducerObject = (state, payload) => {
@@ -15,20 +16,22 @@ const reducerObject = (state, payload) => {
       ...state,
       accountName: payload,
     },
-    SET_SEARCH: {
-      ...state,
-      url: `https://telos.caleos.io/v2/state/get_account?account=${state.accountName}`,
-    },
     FETCH_DATA_SUCCESS: {
       ...state,
       data: payload,
       loadingAccount: false,
+      error: "",
     },
-    // FETCH_DATA_ERROR: {
-    //   ...state,
-    //   data: { account: { account_name: "" } },
-    //   error: "ERROR HUMANO. AVERIGUELO",
-    // },
+    FETCH_DATA_LOADING: {
+      ...state,
+      loadingAccount: true,
+    },
+    FETCH_DATA_ERROR: {
+      ...state,
+      data: { account: { account_name: "" } },
+      error: payload,
+      loadingAccount: false,
+    },
   };
 };
 
@@ -41,21 +44,8 @@ const reducer = (state, action) => {
   }
 };
 
-const fetchData = async (url) => {
-  const response = await fetch(url);
-  const dataRes = await response.json();
-  return dataRes;
-};
-
 export const ContextProvider = ({ children }) => {
   const [state, dispatch] = React.useReducer(reducer, initialState);
-
-  React.useEffect(() => {
-      
-      fetchData(state.url)
-        .then((data) => dispatch({ type: "FETCH_DATA_SUCCESS", payload: data }))
-        //.catch((e) => dispatch({ type: "FETCH_DATA_ERROR" }))
-  }, [state.url]);
 
   return (
     <ContextApp.Provider value={[state, dispatch]}>
@@ -63,3 +53,11 @@ export const ContextProvider = ({ children }) => {
     </ContextApp.Provider>
   );
 };
+
+
+// React.useEffect(() => {
+      
+  //     fetchData(state.url)
+  //       .then((data) => dispatch({ type: "FETCH_DATA_SUCCESS", payload: data }))
+  //       .catch((e) => dispatch({ type: "FETCH_DATA_ERROR" }))
+  // }, [state.url]);
