@@ -6,19 +6,43 @@ import InputSearch from "../../components/InputSearch/InputSearch.jsx";
 
 export const InputPage = () => {
   const [state, dispatch] = React.useContext(ContextApp);
-  const { accountName, data, loadingAccount } = state;
+  const { accountName, data, loadingAccount, error } = state;
+
+  const onWrite = payload => dispatch({ type: "WRITE_ACCOUNT_NAME", payload: payload });
+  const onFetchSuccess = payload => dispatch({ type: "FETCH_DATA_SUCCESS", payload: payload });
+  const onFetchLoading = () =>  dispatch({ type: "FETCH_DATA_LOADING" });
+  const onFetchError = payload => dispatch({ type: "FETCH_DATA_ERROR", payload: payload })
+  
+  const fetchData = async (url) => {
+    try {
+      const response = await fetch(url);
+      const dataRes = await response.json();
+
+      if (response.status !== 200) {
+        return Promise.reject(dataRes.message);
+      } else {
+        return dataRes;
+      }
+    } catch (e) {
+      return new Error(`ERROR HUMANO ${e}`);
+    }
+  };
+
 
   const onHandleChange = (e) => {
-    console.log(e);
-
-    dispatch({ type: "WRITE_ACCOUNT_NAME", payload: e });
+    if (e.length > 12) return;
+    onWrite(e);
   };
 
   const onHandleClick = () => {
-    if(!accountName)return;
-    dispatch({ type: "SET_SEARCH" })
-}
-
+    
+    onFetchLoading();
+    fetchData(`${state.url}${accountName}`)
+    .then(
+      (data) => onFetchSuccess(data),
+      (errorMessage) => onFetchError(errorMessage)
+    );
+  };
 
   return (
     <main className={styles.lienzo}>
@@ -35,7 +59,7 @@ export const InputPage = () => {
             placeholder={"Telos Username"}
             onClick={onHandleClick}
             value={accountName}
-            onChange={(e) => onHandleChange(e)}
+            onChange={onHandleChange}
           />
 
           <Typography
@@ -44,13 +68,16 @@ export const InputPage = () => {
             paddingTop="20px"
             gutterBottom
           >
-            {
-            loadingAccount === false
-              ? data.account.account_name
-              : "loading..."}
+            {loadingAccount
+              ? "loading"
+              : error
+              ? error
+              : data.account.account_name}
           </Typography>
 
-          <p className={styles.leyenda}>Connect to your TELOS wallet with one click!</p>
+          <p className={styles.leyenda}>
+            Connect to your TELOS wallet with one click!
+          </p>
         </div>
 
         <div className={styles.pie}>
