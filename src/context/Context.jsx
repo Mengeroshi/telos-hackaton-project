@@ -32,6 +32,10 @@ const reducerObject = (state, payload) => {
       error: payload,
       loadingAccount: false,
     },
+    RESTART_STATE:{
+      ...initialState,
+      data: { account: { account_name: "add your TELOS Account" } }
+    } 
   };
 };
 

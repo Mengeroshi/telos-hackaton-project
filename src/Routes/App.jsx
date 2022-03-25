@@ -6,7 +6,7 @@ export const App = () => {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<InputPage/>} />
-        <Route path="/portfolio" element={<Portfolio />} />
+        <Route path="/portfolio" element={<Portfolio />}/>
         {/* <Route path="*" element={<NotFound/>}/> */}
       </Routes>
     </BrowserRouter>

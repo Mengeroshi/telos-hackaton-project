@@ -7,6 +7,8 @@ import { LineChart } from "../../components/LineChart/LineChart";
 import { DoughnutChart } from "../../components/DoughnutChart/DoughnutChart";
 import Navbar from "../../components/Nav/Navbar.jsx";
 import Tablas from "../../components/Table/Tabla.jsx";
+import { ContextApp } from "../../context/Context";
+
 
 /*  Elemento creado solo para simular un listado de Tokens
     IMPORTANTE: Eliminar esto de la versión final 
@@ -33,6 +35,8 @@ const elements = [
 ];
 
 export const Portfolio = () => {
+  const [state] = React.useContext(ContextApp);
+  const {data} = state;
   return (
     <main>
       <div>
@@ -53,7 +57,7 @@ export const Portfolio = () => {
                 </Grid>
                 <Grid item xs={2} sm={2} md={2} lg={2} xl={2}>
                   <div className={styles.EstiloAdd}>
-                    <span>Address</span>
+                    <span>{data.account.account_name}</span>
                   </div>
                 </Grid>
               </Grid>
