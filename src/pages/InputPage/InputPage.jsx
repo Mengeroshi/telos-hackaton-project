@@ -3,13 +3,19 @@ import { ContextApp } from "../../context/Context";
 import styles from "./InputPage.module.css";
 import Typography from "@mui/material/Typography";
 import InputSearch from "../../components/InputSearch/InputSearch.jsx";
+import {useNavigate} from 'react-router-dom';
+
 
 export const InputPage = () => {
   const [state, dispatch] = React.useContext(ContextApp);
   const { accountName, data, loadingAccount, error } = state;
+  let navigate = useNavigate();
 
   const onWrite = payload => dispatch({ type: "WRITE_ACCOUNT_NAME", payload: payload });
-  const onFetchSuccess = payload => dispatch({ type: "FETCH_DATA_SUCCESS", payload: payload });
+  const onFetchSuccess = payload => {
+    dispatch({ type: "FETCH_DATA_SUCCESS", payload: payload });
+    navigate('/portfolio');
+  }
   const onFetchLoading = () =>  dispatch({ type: "FETCH_DATA_LOADING" });
   const onFetchError = payload => dispatch({ type: "FETCH_DATA_ERROR", payload: payload })
   

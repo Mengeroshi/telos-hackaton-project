@@ -1,13 +1,14 @@
 import React from "react";
+import { randomGradientAlpha } from "../utils/randomGradientAlpha";
 
 export const ContextApp = React.createContext();
-
 const initialState = {
   accountName: "",
   data: { account: { account_name: "" } },
   loadingAccount: false,
   url: "https://telos.caleos.io/v2/state/get_account?account=",
   error: "",
+  tokens: [],
 };
 
 const reducerObject = (state, payload) => {
@@ -21,6 +22,15 @@ const reducerObject = (state, payload) => {
       data: payload,
       loadingAccount: false,
       error: "",
+      tokens: payload?.tokens?.map (token =>{
+        const tokenObj = {
+          token: token.symbol,
+          amount: token.amount,
+          colorList: randomGradientAlpha(),
+        }
+        return tokenObj;
+
+      })
     },
     FETCH_DATA_LOADING: {
       ...state,
@@ -32,6 +42,10 @@ const reducerObject = (state, payload) => {
       error: payload,
       loadingAccount: false,
     },
+    RESTART_STATE:{
+      ...initialState,
+      data: { account: { account_name: "add your TELOS Account" } }
+    } 
   };
 };
 
