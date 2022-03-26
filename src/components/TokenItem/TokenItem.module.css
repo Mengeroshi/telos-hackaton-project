@@ -1,0 +1,39 @@
+.container{
+    display: flex;
+    align-items: center;
+    padding: 4px 10px;
+    /* From https://css.glass */
+background: rgba(255, 255, 255, 0.03);
+border-radius: 8px;
+box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+backdrop-filter: blur(5px);
+-webkit-backdrop-filter: blur(5px);
+/* border: 1px solid rgba(255, 255, 255, 0.3); */
+
+}
+.container > * + *{margin-left: 8px;}
+
+.circle{
+    width: 50px;
+    height: 50px;
+    border-radius: 100%;
+    position: relative;
+    background: #5319F2;
+}
+
+.questionMark{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 30px;
+}
+
+.TLOSIcon{
+    position: absolute;
+    width: 50%;
+    height: auto;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}

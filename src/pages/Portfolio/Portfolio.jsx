@@ -8,35 +8,17 @@ import { DoughnutChart } from "../../components/DoughnutChart/DoughnutChart";
 import Navbar from "../../components/Nav/Navbar.jsx";
 import Tablas from "../../components/Table/Tabla.jsx";
 import { ContextApp } from "../../context/Context";
-
-
-/*  Elemento creado solo para simular un listado de Tokens
-    IMPORTANTE: Eliminar esto de la versión final 
-*/
-const elements = [
-  "Token X 30%",
-  "Token X 30%",
-  "Token X 30%",
-  "Token X 30%",
-  "Token X 30%",
-  "Token X 30%",
-  "Token X 30%",
-  "Token X 30%",
-  "Token X 30%",
-  "Token X 30%",
-  "Token X 30%",
-  "Token X 30%",
-  "Token X 30%",
-  "Token X 30%",
-  "Token X 30%",
-  "Token X 30%",
-  "Token X 30%",
-  "Token X 30%",
-];
+import { TokenItem } from "../../components/TokenItem/TokenItem";
+import { tlosToStart } from "../../utils/tlosToStart";
 
 export const Portfolio = () => {
   const [state] = React.useContext(ContextApp);
-  const {data} = state;
+  const {data, tokens} = state;
+  console.log(tokens)
+
+  let tokensSorted = tlosToStart(tokens) || tokens;
+  
+  
   return (
     <main>
       <div>
@@ -82,13 +64,21 @@ export const Portfolio = () => {
 
                 <div className={styles.EstiloToken}>
                   <div className={styles.SizeToken}>
-                    <p>TLOS 60%</p>
-                    <p>Token A 20%</p>
-
+                    <h2 className={styles.Titulos}>Tokens</h2>
                     {/* Loop creado solo para simular un listado de tokens */}
-                    {elements.map((value, index) => {
-                      return <p key={index}>{value}</p>;
+                    <ul className={styles.TokenList}>
+                    {tokensSorted.map((token, i) => {
+                      return(
+                        <TokenItem 
+                          key={i}
+                          ticker={token.token}
+                          amount={token.amount}
+                          gradientList={token.colorList}
+                        />
+                      ) 
                     })}
+                    </ul>
+                    
                   </div>
                 </div>
               </Grid>
