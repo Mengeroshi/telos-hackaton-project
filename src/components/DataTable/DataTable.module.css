@@ -1,8 +1,9 @@
-.Estilonivel{
-  background: rgb(32, 6, 19);
-  border-radius: 15px;
-  height: 80px;
-  margin-top: 20px;
+
+.cellValueContainer{
+  display: flex;
+}
+.cellOwnersContainer{
+  display: flex;
 }
 
 /*######################*/

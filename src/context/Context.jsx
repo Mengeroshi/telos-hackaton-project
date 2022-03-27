@@ -22,15 +22,30 @@ const reducerObject = (state, payload) => {
       data: payload,
       loadingAccount: false,
       error: "",
-      tokens: payload?.tokens?.map (token =>{
+      tokens: payload?.tokens?.map((token) => {
         const tokenObj = {
           token: token.symbol,
           amount: token.amount,
           colorList: randomGradientAlpha(),
-        }
+        };
         return tokenObj;
-
-      })
+      }),
+      txs: payload?.actions
+        ?.filter((item) => item.act.name === "transfer")
+        .map((tx) => {
+          const txObj = {
+            date: tx.timestamp,
+            type:
+              tx.act.data.to === payload?.account?.account_name
+                ? "receive"
+                : "send",
+            from: tx.act.data.from,
+            to: tx.act.data.to,
+            ticker: tx.act.data.symbol,
+            amount: tx.act.data.amount,
+          };
+          return txObj;
+        }),
     },
     FETCH_DATA_LOADING: {
       ...state,
@@ -42,10 +57,10 @@ const reducerObject = (state, payload) => {
       error: payload,
       loadingAccount: false,
     },
-    RESTART_STATE:{
+    RESTART_STATE: {
       ...initialState,
-      data: { account: { account_name: "add your TELOS Account" } }
-    } 
+      data: { account: { account_name: "add your TELOS Account" } },
+    },
   };
 };
 
@@ -68,10 +83,9 @@ export const ContextProvider = ({ children }) => {
   );
 };
 
-
 // React.useEffect(() => {
-      
-  //     fetchData(state.url)
-  //       .then((data) => dispatch({ type: "FETCH_DATA_SUCCESS", payload: data }))
-  //       .catch((e) => dispatch({ type: "FETCH_DATA_ERROR" }))
-  // }, [state.url]);
+
+//     fetchData(state.url)
+//       .then((data) => dispatch({ type: "FETCH_DATA_SUCCESS", payload: data }))
+//       .catch((e) => dispatch({ type: "FETCH_DATA_ERROR" }))
+// }, [state.url]);

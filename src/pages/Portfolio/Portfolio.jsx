@@ -6,15 +6,15 @@ import Container from "@mui/material/Container";
 import { LineChart } from "../../components/LineChart/LineChart";
 import { DoughnutChart } from "../../components/DoughnutChart/DoughnutChart";
 import Navbar from "../../components/Nav/Navbar.jsx";
-import Tablas from "../../components/Table/Tabla.jsx";
+import { DataTable } from "../../components/DataTable/DataTable";
 import { ContextApp } from "../../context/Context";
 import { TokenItem } from "../../components/TokenItem/TokenItem";
 import { tlosToStart } from "../../utils/tlosToStart";
 
 export const Portfolio = () => {
   const [state] = React.useContext(ContextApp);
-  const {data, tokens} = state;
-  console.log(tokens)
+  const {data, tokens, txs} = state;
+  console.log(txs) ;
 
   let tokensSorted = tlosToStart(tokens) || tokens;
   
@@ -50,7 +50,7 @@ export const Portfolio = () => {
                 </div>
                 <div className={styles.EstiloTabla}>
                   <h2 className={styles.Titulos}>Historial</h2>
-                  <Tablas />
+                  <DataTable/>
                 </div>
               </Grid>
 

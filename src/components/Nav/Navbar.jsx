@@ -1,4 +1,4 @@
-import * as React from "react";
+import React from "react";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
@@ -12,10 +12,8 @@ export default function DenseAppBar() {
   const [state, dispatch] = React.useContext(ContextApp);
   const onGoHome = () =>{
     dispatch({ type: "RESTART_STATE"})
-    navigate('/')
-
+    navigate('/');
   }
-
   return (
     <Box sx={{ flexGrow: 1 }}>
       <nav className={styles.navbar}>
