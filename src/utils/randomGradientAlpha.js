@@ -1,5 +1,5 @@
 export const randomGradientAlpha = () => {
-    const tonePicker = (main, dif = 57) => {
+    const tonePicker = (main, dif = 49) => {
       const res = main - dif;
   
       if (res < 0) {
@@ -12,8 +12,8 @@ export const randomGradientAlpha = () => {
     const mainTone = random360;
     const secoundTone = tonePicker(mainTone);
   
-    const color1 = `hsl(${secoundTone}, 60%, 23%) 10%`;
-    const color2 = `hsl(${mainTone}, 62%, 38%)`;
+    const color1 = `hsl(${secoundTone}, 97%, 41%)`;
+    const color2 = `hsl(${mainTone}, 100%, 65%)`;
   
     return [color1, color2];
   };

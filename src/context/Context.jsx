@@ -1,5 +1,6 @@
 import React from "react";
 import { randomGradientAlpha } from "../utils/randomGradientAlpha";
+import { randomPrice } from "../utils/randomPrice";
 
 export const ContextApp = React.createContext();
 const initialState = {
@@ -27,6 +28,7 @@ const reducerObject = (state, payload) => {
           token: token.symbol,
           amount: token.amount,
           colorList: randomGradientAlpha(),
+          priceUSD:randomPrice(),
         };
         return tokenObj;
       }),
