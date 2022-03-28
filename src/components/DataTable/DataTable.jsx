@@ -10,7 +10,7 @@ const cellValue = (params) =>{
   return(
     <div className={styles.cellValueContainer}>
       <div>{params.value.amount}</div>
-      <di>{params.value.ticker}</di>
+      <div>{params.value.ticker}</div>
     </div>
   )
 }
@@ -20,7 +20,7 @@ const cellOwners = (params) =>{
     <div className={styles.cellOwnersContainer}>
       <div>{params.value.from}</div>
       {">"}
-      <di>{params.value.to}</di>
+      <div>{params.value.to}</div>
     </div>
   )
 }

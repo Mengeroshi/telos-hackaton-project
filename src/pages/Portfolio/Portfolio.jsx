@@ -58,6 +58,7 @@ export const Portfolio = () => {
                 <div className={styles.EstiloTokenGrafi}>
                   {/* <p className={styles.Titulos}>Assets</p> */}
                   <div className={styles.SizeGrafi}>
+                  <h2 className={styles.Titulos}>Assets</h2>
                     <DoughnutChart />
                   </div>
                 </div>
