@@ -46,8 +46,7 @@ export const DoughnutChart = () => {
             let label = ctx[0].label;
             let index = ctx[0].dataIndex;
             let amount = ctx[0].dataset.tokenAmount[index];
-            console.log(ctx)
-            return `${amount} ${label}  `
+            return `${amount} ${label}`
           }
         }
       },
