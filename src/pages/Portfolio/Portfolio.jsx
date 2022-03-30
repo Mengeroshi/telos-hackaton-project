@@ -104,7 +104,7 @@ export const Portfolio = () => {
                   xl={9}
                   sx={{ display: { xs: "none", sm: "none", md: "block" } }}
                 >
-                  <p>Powered by Caleos</p>
+                  <p>About Squirrelfi</p>
                   <p>© 2022 Squirrelfi</p>
                 </Grid>
                 <Grid

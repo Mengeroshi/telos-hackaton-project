@@ -4,6 +4,7 @@ import styles from "./InputPage.module.css";
 import Typography from "@mui/material/Typography";
 import InputSearch from "../../components/InputSearch/InputSearch.jsx";
 import {useNavigate} from 'react-router-dom';
+import {ReactComponent as Caleos} from '../../assets/icons/Caleos.svg';
 
 
 
@@ -88,13 +89,13 @@ export const InputPage = () => {
         </div>
 
         <div className={styles.pie}>
-          <div>
+          <div className={styles.item1}>
             <p>About Squirrelfi</p>
           </div>
           <div>
-            <p>Powered By</p>
+            <Caleos className={styles.powered}/>
           </div>
-          <div>
+          <div className={styles.item2}>
             <p>Privacity | Terms</p>
           </div>
         </div>
