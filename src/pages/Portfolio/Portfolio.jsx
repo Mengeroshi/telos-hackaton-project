@@ -10,14 +10,23 @@ import { DataTable } from "../../components/DataTable/DataTable";
 import { ContextApp } from "../../context/Context";
 import { TokenItem } from "../../components/TokenItem/TokenItem";
 import { tlosToStart } from "../../utils/tlosToStart";
+import { useFetchTlosPrices } from "../../hooks/useFetchTlosPrices";
 
 export const Portfolio = () => {
   const [state] = React.useContext(ContextApp);
-  const {data, tokens, txs} = state;
-  console.log(txs) ;
-
+  const {data, tokens} = state;
   let tokensSorted = tlosToStart(tokens) || tokens;
-  
+  const { prices, loadingPrices } = useFetchTlosPrices();
+  const isTelosOnWallet =tokensSorted[0].token === "TLOS";
+  console.log(isTelosOnWallet);
+
+  const TLOSAmount = tokensSorted[0].amount;
+  const lastPrice = prices[prices?.length - 1]?.price || 100;
+ 
+  const netWorth = isTelosOnWallet
+    ? (TLOSAmount * lastPrice).toFixed(2)
+    : "No available";
+
   
   return (
     <main>
@@ -34,7 +43,7 @@ export const Portfolio = () => {
                 <Grid item xs={10} sm={10} md={10} lg={10} xl={10}>
                   <div>
                     <span>Portfolio</span>
-                    <h1>$1,000,000.00 USD</h1>
+                    <h1>${netWorth} USD</h1>
                   </div>
                 </Grid>
                 <Grid item xs={2} sm={2} md={2} lg={2} xl={2}>
@@ -46,7 +55,12 @@ export const Portfolio = () => {
 
               <Grid item xs={12} sm={12} md={7.5} lg={7.5} xl={8}>
                 <div className={styles.EstiloGrafi}>
-                  <LineChart />
+                  <LineChart
+                    loading={loadingPrices}
+                    dataPrices={prices}
+                    amount={TLOSAmount}
+                    lastPrice={lastPrice}
+                   />
                 </div>
                 <div className={styles.EstiloTabla}>
                   <h2 className={styles.Titulos}>Historial</h2>
@@ -56,7 +70,6 @@ export const Portfolio = () => {
 
               <Grid item xs={12} sm={12} md={4.05} lg={4} xl={4}>
                 <div className={styles.EstiloTokenGrafi}>
-                  {/* <p className={styles.Titulos}>Assets</p> */}
                   <div className={styles.SizeGrafi}>
                   <h2 className={styles.Titulos}>Assets</h2>
                     <DoughnutChart />

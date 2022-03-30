@@ -1,6 +1,7 @@
+import React from "react";
 import styles from "./LineChart.module.css";
 
-import React from 'react';
+import { ReactComponent as TLOSIcon } from '../../assets/icons/TLOS.svg';
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -10,8 +11,8 @@ import {
   Title,
   Tooltip,
   Legend,
-} from 'chart.js';
-import { Line } from 'react-chartjs-2';
+} from "chart.js";
+import { Line } from "react-chartjs-2";
 
 ChartJS.register(
   CategoryScale,
@@ -23,47 +24,41 @@ ChartJS.register(
   Legend
 );
 
-const data = {
-  labels: Array.from({length: 10}, () => Math.floor(Math.random() * 10).toString()),
-  datasets: [
-    {
-      label: 'assad',
-      data: Array.from({length: 10}, () => Math.floor(Math.random() * 1000000)),
-      backgroundColor: 'purple',
-      borderColor: 'purple',
-      tension: 0.25,
-      borderWidth: 3,
-    },
-    
-  ],
-  
-}
 
 
 const options = {
+  elements:{
+    point:{
+      radius:0   }
+  },
   plugins: {
-
     legend: {
       display: false,
       labels: {
         font: {
           size: 100,
           // family: 'Dosis'
-      }
+        },
       },
     },
-    tooltip:{
-      // bodyFont:{
+    tooltip: {
+      titleFont:{
+        family: 'Space Mono',
+        font: 12,
+      },
+      bodyFont:{
+        family: 'Space Mono',
+        size:20,
+      },
+      titleColor: "white",
+      bodyColor: "#FF4A76",
+      // :{
       //   family: 'Dosis'
       // },
-      // titleFont:{
-      //   family: 'Dosis'
-      // },
-      titleAlign:'center',
-      backgroundColor: 'hsla(270, 50%, 40%, .8)',
-      titleColor: '#1EB9FC',
+      titleAlign: "center",
+      backgroundColor: "hsla(270, 50%, 40%, .8)",
       displayColors: false,
-    }
+    },
   },
   scales: {
     x: {
@@ -73,33 +68,71 @@ const options = {
     y: {
       display: false,
       grid: { display: false },
-      grace:'30%',
-      beginAtZero: true
+      grace: "70%",
+      beginAtZero: false,
     },
   },
   animations: {
     tension: {
-      duration: 2500,
-      easing: 'linear',
-      from: .2,
-      to: .6,
-      loop: true
-    }
+      duration: 2000,
+      easing: "linear",
+      from: 0.2,
+      to: 0.6,
+      loop: true,
+    },
   },
   interaction: {
     intersect: false,
-    mode: 'index',
-  }
+    mode: "index",
+  },
 };
 
+export const LineChart = ({loading, dataPrices, amount=1, lastPrice}) => {
+  let dataList = [];
+    let labelList = [];
+
+    dataPrices.forEach((item, i = 2) => {
+      if (i % 6 === 0) {
+        dataList.push(item.price * amount );
+        labelList.push(item.date);
+      }
+    });
 
 
-export const LineChart = () =>{
-  return(
+  
+  const data = {
+    labels:labelList,
+    datasets: [
+      {
+        label: "",
+        data: dataList,
+        backgroundColor: "#FF4A76",
+        borderColor: "#FF4A76",
+        tension: 0.25,
+        borderWidth: 5,
+      },
+    ],
+  };
+
+
+  return (
     <div className="container-fluid">
-          <div className={styles.item}>
-          <Line data={data} options={options}/>
+      <div className={styles.item}>
+        { loading 
+        ? "loading"
+        :(
+          <div>
+            <Line data={data} options={options} />
+            <div className={styles.overlay}>
+            <TLOSIcon className={styles.TLOSIcon}/>
+              <h3>TLOS</h3>
+              <h3> -${(lastPrice).toFixed(2)}USD  </h3>
+              
+            </div>
           </div>
+        )
+        }
       </div>
-  )
-}
+    </div>
+  );
+};
