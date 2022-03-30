@@ -88,7 +88,7 @@ export const InputPage = () => {
 
         <div className={styles.pie}>
           <div>
-            <p>About NameApp</p>
+            <p>Powered by Caleos</p>
           </div>
           <div>
             <p>Privacity | Terms</p>
