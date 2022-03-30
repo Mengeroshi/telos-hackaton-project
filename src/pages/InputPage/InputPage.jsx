@@ -77,7 +77,7 @@ export const InputPage = () => {
             gutterBottom
           >
             {loadingAccount
-              ? "loading"
+              ? "Loading..."
               : error
               ? error
               : data.account.account_name}
