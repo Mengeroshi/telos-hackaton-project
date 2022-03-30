@@ -6,6 +6,7 @@ import InputSearch from "../../components/InputSearch/InputSearch.jsx";
 import {useNavigate} from 'react-router-dom';
 
 
+
 export const InputPage = () => {
   const [state, dispatch] = React.useContext(ContextApp);
   const { accountName, data, loadingAccount, error } = state;
@@ -88,7 +89,10 @@ export const InputPage = () => {
 
         <div className={styles.pie}>
           <div>
-            <p>Powered by Caleos</p>
+            <p>About Squirrelfi</p>
+          </div>
+          <div>
+            <p>Powered By</p>
           </div>
           <div>
             <p>Privacity | Terms</p>
