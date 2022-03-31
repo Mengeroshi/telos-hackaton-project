@@ -69,9 +69,12 @@ export const DataTable = () =>{
         rows={rows}
         disableColumnMenu={true}
         disableSelectionOnClick
-
+        sx={{ 
+          color: "white",
+          fontfamily: "spaceMono",
+          border: "none"
+        }}
       />
-      <div className={styles.Estilonivel}></div>
     </Box>
   );
 }
