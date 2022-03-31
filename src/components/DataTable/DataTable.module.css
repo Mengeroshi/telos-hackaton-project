@@ -1,9 +1,21 @@
 
 .cellValueContainer{
   display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
+.cellValueContainer > div:last-child{
+  font-size: 10px;
+  margin-left: 2px;
+} 
 .cellOwnersContainer{
   display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: 12px;
+  margin: 3px 0;
 }
 
 /*######################*/
@@ -26,4 +38,78 @@
 /* Cambiamos el fondo cuando esté en active */
 .SizeTabla::-webkit-scrollbar-thumb:active {
   background-color: var(--bgScroll);
+}
+
+
+.root{
+  font-family: var(--tipografia) !important;
+  color: white !important;
+  border: none !important;
+  background: rgba(255, 255, 255, 0.03);
+border-radius: 8px;
+box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+backdrop-filter: blur(5px);
+-webkit-backdrop-filter: blur(5px);
+}
+
+:global(.MuiDataGrid-columnSeparator) {
+  display: none !important;
+}
+:global(.MuiDataGrid-columnHeader:focus),
+:global(.MuiDataGrid-columnHeader:focus-within),
+:global(.MuiDataGrid-cell:focus),
+:global(.MuiDataGrid-cell:focus-within) {
+  outline: none !important;
+}
+:global(.MuiDataGrid-cell),
+:global(.MuiDataGrid-columnHeaders) {
+  border-bottom: none !important;
+}
+
+.sphere, .TLOS{
+    width: 30px;
+    height: 30px;
+    border-radius: 100%;
+    position: relative;
+}
+.TLOS{
+  background-color: hsl(256, 100%, 65%);
+  
+}
+.TLOS > svg{
+  position: absolute;
+  width: 15px;
+  height: auto;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.questionMark{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 20px;
+}
+
+.receive,.send{
+  border: 1px solid currentColor;
+  padding: 5 0px;
+  border-radius: 4px;
+  width: 62px;
+  text-align: center;
+  font-size: 12px;
+}
+
+.receive{
+  color:#4aff56;
+}
+.send{
+  color: #ff4a4a;
+}
+
+.tri{
+  border-bottom: 5px solid transparent;
+  border-left: 5px solid white;
+  border-top: 5px solid transparent;
 }
