@@ -27,11 +27,11 @@ const cellOwners = (params) =>{
 
   const columns = [
     {field: "id", hide: true, flex: 1, },
-    {field: "date", headerName: "Date", flex: 1,},
-    {field: "assets", headerName: "Assets", flex: 1,},
-    {field: "type", headerName: "Type", flex: 1,},
-    {field: "owners", headerName: "Owners", flex: 1, renderCell: cellOwners},
-    {field: "value", headerName: "Value",flex: 1, renderCell: cellValue},
+    {field: "date", headerName: "Date", flex: 1, cellClassName: 'theme--cell',},
+    {field: "assets", headerName: "Assets", flex: 1, cellClassName: 'theme--cell',},
+    {field: "type", headerName: "Type", flex: 1, cellClassName: 'theme--cell',},
+    {field: "owners", headerName: "Owners", flex: 1, cellClassName: 'theme--cell', renderCell: cellOwners},
+    {field: "value", headerName: "Value",flex: 1, cellClassName: 'theme--cell', renderCell: cellValue},
   ]
 
 
@@ -62,7 +62,16 @@ export const DataTable = () =>{
 
   return (
     <Box
-      sx={{ width: "100%", overflow: "hidden", background: "transparent", border: "none", height: 500}}
+      sx={{ 
+        width: "100%", 
+        overflow: "hidden", 
+        background: "transparent", 
+        border: "none", 
+        height: 500,
+        '& .theme--cell': {
+          borderBottom: "none",
+        },
+      }}
     >
       <DataGrid
         columns={columns}
@@ -75,8 +84,7 @@ export const DataTable = () =>{
           fontFamily: "var(--tipografia)",
           overflowY: "auto",
           scrollbarColor: "var(--bgScroll) #0e0d0d00",
-          scrollbarWidth: "thin",
-          borderBottom: "0px"
+          scrollbarWidth: "thin"
         }}
       />
     </Box>
