@@ -72,7 +72,9 @@ export const DataTable = () =>{
         sx={{ 
           color: "white",
           fontfamily: "spaceMono",
-          border: "none"
+          border: "none",
+          fontFamily: "var(--tipografia)",
+          borderBottom: "0px"
         }}
       />
     </Box>
