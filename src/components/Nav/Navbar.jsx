@@ -1,11 +1,11 @@
 import React from "react";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
-import Typography from "@mui/material/Typography";
 import IconButton from "@mui/material/IconButton";
 import styles from "./Nav.module.css";
 import {useNavigate} from 'react-router-dom';
 import { ContextApp } from "../../context/Context";
+import {ReactComponent as Logo} from '../../assets/icons/logoFinal.svg';
 
 export default function DenseAppBar() {
   let navigate = useNavigate();
@@ -25,11 +25,11 @@ export default function DenseAppBar() {
             sx={{ mr: 2 }}
             onClick={onGoHome}
           >
-            <div className={styles.NavLogo}></div>
+            <Logo className={styles.NavLogo}/>
           </IconButton>
-          <Typography variant="h6" color="inherit" component="div">
-            Squirrelfi
-          </Typography>
+          <div>
+            <p className={styles.TextMain}>Squirrelfi</p>
+          </div>
         </Toolbar>
       </nav>
     </Box>

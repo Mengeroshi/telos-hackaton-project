@@ -4,6 +4,7 @@ import styles from "./InputPage.module.css";
 import Typography from "@mui/material/Typography";
 import InputSearch from "../../components/InputSearch/InputSearch.jsx";
 import {useNavigate} from 'react-router-dom';
+import {ReactComponent as Logo} from '../../assets/icons/logoFinal.svg';
 
 
 export const InputPage = () => {
@@ -53,13 +54,14 @@ export const InputPage = () => {
   return (
     <main className={styles.lienzo}>
       <div className={styles.divPadre}>
-        <div className={styles.header}>
-          <div className={styles.mainLogo}></div>
+        <div>
           <p className={styles.nameApp}>Squirrelfi</p>
         </div>
 
         <div className={styles.content}>
-          <div className={styles.logo}></div>
+          <div>
+            <Logo className={styles.LogoProp}/>
+          </div>
 
           <InputSearch
             placeholder={"Telos Username"}
@@ -75,7 +77,7 @@ export const InputPage = () => {
             gutterBottom
           >
             {loadingAccount
-              ? "loading"
+              ? "Loading..."
               : error
               ? error
               : data.account.account_name}

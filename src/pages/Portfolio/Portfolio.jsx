@@ -40,13 +40,13 @@ export const Portfolio = () => {
             <Grid container spacing={2} sx={{ display: "flex", justifyContent: "center" }}>
 
               <Grid container className={styles.EstiloPrecio} >
-                <Grid item xs={10} sm={10} md={10} lg={10} xl={10}>
+                <Grid item xs={6} sm={6} md={6} lg={6} xl={6}>
                   <div>
                     <span>Portfolio</span>
                     <h1>${netWorth} USD</h1>
                   </div>
                 </Grid>
-                <Grid item xs={2} sm={2} md={2} lg={2} xl={2}>
+                <Grid item xs={6} sm={6} md={6} lg={6} xl={6}>
                   <div className={styles.EstiloAdd}>
                     <span>{data.account.account_name}</span>
                   </div>

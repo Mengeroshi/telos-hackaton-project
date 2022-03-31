@@ -9,22 +9,17 @@
   background: var(--bg);
 }
 
-.header {
-  display: flex;
-}
-
-.mainLogo{
-  background-image: url("../../../public/logo.png");
-  background-repeat: no-repeat;
-  width: 50px;
-  height: 50px;
-}
-
 .nameApp{
   color: var(--pinkContrast);
-  margin-left: 10px;
-  margin-top: 16px;
-  font-size: 20px;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 30px;
+}
+
+.LogoProp{
+  width: 100%;
+  height: 250px;
+  margin-bottom: 22px;
 }
 
 .content {
@@ -33,15 +28,6 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  height: 80vh;
-}
-
-.logo{
-    background-image: url("../../../public/Vector.svg");
-    background-repeat: no-repeat;
-    width: 208px;
-    height: 224px;
-    margin-bottom: 25px;
 }
 
 .leyenda{
@@ -54,4 +40,3 @@
   display: flex;
   justify-content: space-between;
 }
-

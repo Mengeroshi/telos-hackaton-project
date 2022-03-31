@@ -52,14 +52,32 @@
   pointer-events: painted;
 }
 .btnSearch:focus ~ .inputSearch {
-  width: 500px;
+  width: 800px;
   border-radius: 0px;
   background-color: transparent;
   transition: all 500ms cubic-bezier(0, 0.11, 0.35, 2);
 }
 .inputSearch:focus {
-  width: 500px;
+  width: 800px;
   border-radius: 0px;
   background-color: transparent;
   transition: all 500ms cubic-bezier(0, 0.11, 0.35, 2);
+}
+
+@media (max-width: 750px) {
+  .btnSearch:focus ~ .inputSearch {
+    width: 600px;
+  }
+  .inputSearch:focus{
+    width: 600px;
+  }
+}
+
+@media (max-width: 600px) {
+  .btnSearch:focus ~ .inputSearch {
+    width: 400px;
+  }
+  .inputSearch:focus{
+    width: 400px;
+  }
 }
