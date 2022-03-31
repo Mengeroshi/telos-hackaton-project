@@ -34,7 +34,7 @@ body {
 .EstiloGrafi {
   background: rgba(245, 56, 158, 0.15);
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25), 0px 4px 4px rgba(0, 0, 0, 0.25);
-  backdrop-filter: blur(40px);
+  backdrop-filter: blur(15px);
   border-radius: 15px;
   padding: 20px;
   margin-bottom: 20px;
@@ -43,7 +43,7 @@ body {
 .EstiloTabla {
   background: rgba(245, 56, 158, 0.15);
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25), 0px 4px 4px rgba(0, 0, 0, 0.25);
-  backdrop-filter: blur(40px);
+  backdrop-filter: blur(15px);
   border-radius: 15px;
   padding: 20px;
   height: 630px;
@@ -66,7 +66,7 @@ body {
 .EstiloTokenGrafi {
   background: rgba(245, 56, 158, 0.15);
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25), 0px 4px 4px rgba(0, 0, 0, 0.25);
-  backdrop-filter: blur(40px);
+  backdrop-filter: blur(15px);
   border-radius: 15px;
   padding: 20px;
   margin-bottom: 20px;
@@ -93,7 +93,7 @@ body {
 .EstiloToken {
   background: rgba(245, 56, 158, 0.15);
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25), 0px 4px 4px rgba(0, 0, 0, 0.25);
-  backdrop-filter: blur(40px);
+  backdrop-filter: blur(15px);
   border-radius: 15px;
   padding: 20px;
   margin-bottom: 20px;

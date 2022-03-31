@@ -1,0 +1,60 @@
+.cuadro1{
+  position: absolute; 
+  left: -143px; 
+  top: 500px; 
+  z-index: 1;
+  width: 446px;
+  height: 467px;
+  background: var(--bgDecoration);
+  border-radius: 50%;
+}
+
+.cuadro2{
+  position: absolute; 
+  z-index: 1;
+  border-radius: 50%;
+  left: 300px; 
+  top: 1000px; 
+  width: 140px;
+  height: 140px;
+  background: var(--bgCuadro2);
+  
+}
+
+.cuadro3{
+  position: absolute; 
+  right: -150px; 
+  top: 270px;
+  z-index: 1;
+  width: 404px;
+  height: 425px;
+  border-radius: 50%;
+  background: var(--bgDecoration)
+  }
+
+.cuadro4{
+  position: absolute; 
+  border-radius: 50%;
+  z-index: 1;
+  right: 430px; 
+  top: 500px; 
+  width: 222px;
+  height: 237px;
+  background: var(--bgDecoration)
+}
+
+.cuadro5{
+  position: absolute;
+  z-index: 1; 
+  border-radius: 50%;
+  background: var(--bgDecoration);
+  right: 55px; 
+  top: 999px;
+  
+  width: 500px;
+  height: 500px;
+  /* formar un semi circulo*/
+  /*border-radius: 500px 500px 0 0;
+  -moz-border-radius: 500px 500px 0 0;
+  -webkit-border-radius: 500px 500px 0 0;*/
+}
