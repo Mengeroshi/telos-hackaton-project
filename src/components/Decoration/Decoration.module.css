@@ -23,8 +23,8 @@
 
 .cuadro3{
   position: absolute; 
-  right: -150px; 
-  top: 270px;
+  left: 910px; 
+  top: 250px;
   z-index: 1;
   width: 404px;
   height: 425px;
@@ -36,8 +36,8 @@
   position: absolute; 
   border-radius: 50%;
   z-index: 1;
-  right: 430px; 
-  top: 500px; 
+  right: 450px; 
+  top: 550px; 
   width: 222px;
   height: 237px;
   background: var(--bgDecoration)
@@ -50,11 +50,69 @@
   background: var(--bgDecoration);
   right: 55px; 
   top: 999px;
-  
   width: 500px;
   height: 500px;
-  /* formar un semi circulo*/
-  /*border-radius: 500px 500px 0 0;
-  -moz-border-radius: 500px 500px 0 0;
-  -webkit-border-radius: 500px 500px 0 0;*/
+}
+
+@media (max-width: 1100px) {
+  .cuadro1 { 
+    top: 300px; 
+    width: 300px;
+    height: 300px;
+  }
+  .cuadro2 {
+    display: none;
+  }
+  .cuadro3 {
+    left: 300px; 
+    top: 666px;
+    width: 300px;
+    height: 300px;
+  }
+  .cuadro4 {
+    width: 300px;
+    height: 300px;
+    right: 250px; 
+    top: 1000px; 
+  }
+  .cuadro5 {
+    display: none;
+  }
+}
+
+@media (max-width: 800px) {
+  .cuadro2 {
+    display: block;
+    width: 100px;
+    height: 100px;
+    left: 330px; 
+    top: 1540px;
+  }
+}
+
+@media (max-width: 700px) {
+  .cuadro5 {
+    display: block;
+    width: 500px;
+    height: 500px;
+    right: -22px; 
+    top: 1950px;
+  }
+}
+
+@media (max-width: 550px) {
+  .cuadro5 {
+    top: 2200px;
+    height: 250px;
+    /* formar un semi circulo*/
+    border-radius: 500px 500px 0 0;
+    -moz-border-radius: 500px 500px 0 0;
+    -webkit-border-radius: 500px 500px 0 0;
+  }
+}
+
+@media (max-width: 500px) {
+  .cuadro5 {
+    top: 2080px;
+  }
 }
