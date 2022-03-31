@@ -77,6 +77,11 @@ body {
   margin: 0 auto;
   display: block;
   overflow: auto;
+
+  /*Estilos para el scroll en firefox*/
+  overflow-y: scroll;
+  scrollbar-color: var(--bgScroll) #0e0d0d00;
+  scrollbar-width: thin;
 }
 
 .TokenList{

@@ -71,9 +71,11 @@ export const DataTable = () =>{
         disableSelectionOnClick
         sx={{ 
           color: "white",
-          fontfamily: "spaceMono",
           border: "none",
           fontFamily: "var(--tipografia)",
+          overflowY: "auto",
+          scrollbarColor: "var(--bgScroll) #0e0d0d00",
+          scrollbarWidth: "thin",
           borderBottom: "0px"
         }}
       />
