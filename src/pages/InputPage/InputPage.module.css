@@ -13,14 +13,14 @@
   display: flex;
 }
 
-.mainLogo{
+.mainLogo {
   background-image: url("../../../public/logo.png");
   background-repeat: no-repeat;
   width: 50px;
   height: 50px;
 }
 
-.nameApp{
+.nameApp {
   color: var(--pinkContrast);
   margin-left: 10px;
   margin-top: 16px;
@@ -36,15 +36,15 @@
   height: 80vh;
 }
 
-.logo{
-    background-image: url("../../../public/Vector.svg");
-    background-repeat: no-repeat;
-    width: 208px;
-    height: 224px;
-    margin-bottom: 25px;
+.logo {
+  background-image: url("../../../public/Vector.svg");
+  background-repeat: no-repeat;
+  width: 208px;
+  height: 224px;
+  margin-bottom: 25px;
 }
 
-.leyenda{
+.leyenda {
   font-size: 25px;
   font-weight: 400;
   font-style: normal;
@@ -55,19 +55,26 @@
   justify-content: space-between;
 }
 
-.powered{
-  width: 100%;
-  height: 45px;
+.texto {
+  font-family: "Space Mono";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+}
+.powered {
+  width: auto;
+  height: auto;
 }
 
-@media (max-width: 600px) {
+@media (max-width: 700px) {
   .item1 {
     display: none;
   }
   .item2 {
     display: none;
   }
-  .pie{
+  .pie {
     justify-content: center;
+    align-items: center;
   }
 }

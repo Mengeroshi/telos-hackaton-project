@@ -3,24 +3,25 @@ import { ContextApp } from "../../context/Context";
 import styles from "./InputPage.module.css";
 import Typography from "@mui/material/Typography";
 import InputSearch from "../../components/InputSearch/InputSearch.jsx";
-import {useNavigate} from 'react-router-dom';
-import {ReactComponent as Caleos} from '../../assets/icons/Caleos.svg';
-
-
+import { useNavigate } from "react-router-dom";
+import { ReactComponent as Caleos } from "../../assets/icons/CaleosLogo.svg";
+import Toolbar from "@mui/material/Toolbar";
 
 export const InputPage = () => {
   const [state, dispatch] = React.useContext(ContextApp);
   const { accountName, data, loadingAccount, error } = state;
   let navigate = useNavigate();
 
-  const onWrite = payload => dispatch({ type: "WRITE_ACCOUNT_NAME", payload: payload });
-  const onFetchSuccess = payload => {
+  const onWrite = (payload) =>
+    dispatch({ type: "WRITE_ACCOUNT_NAME", payload: payload });
+  const onFetchSuccess = (payload) => {
     dispatch({ type: "FETCH_DATA_SUCCESS", payload: payload });
-    navigate('/portfolio');
-  }
-  const onFetchLoading = () =>  dispatch({ type: "FETCH_DATA_LOADING" });
-  const onFetchError = payload => dispatch({ type: "FETCH_DATA_ERROR", payload: payload })
-  
+    navigate("/portfolio");
+  };
+  const onFetchLoading = () => dispatch({ type: "FETCH_DATA_LOADING" });
+  const onFetchError = (payload) =>
+    dispatch({ type: "FETCH_DATA_ERROR", payload: payload });
+
   const fetchData = async (url) => {
     try {
       const response = await fetch(url);
@@ -36,17 +37,14 @@ export const InputPage = () => {
     }
   };
 
-
   const onHandleChange = (e) => {
     if (e.length > 12) return;
     onWrite(e);
   };
 
   const onHandleClick = () => {
-    
     onFetchLoading();
-    fetchData(`${state.url}${accountName}`)
-    .then(
+    fetchData(`${state.url}${accountName}`).then(
       (data) => onFetchSuccess(data),
       (errorMessage) => onFetchError(errorMessage)
     );
@@ -93,7 +91,10 @@ export const InputPage = () => {
             <p>About Squirrelfi</p>
           </div>
           <div>
-            <Caleos className={styles.powered}/>
+            <Toolbar>
+              <Typography className={styles.texto}>Powered By</Typography>
+              <Caleos className={styles.powered} />
+            </Toolbar>
           </div>
           <div className={styles.item2}>
             <p>Privacity | Terms</p>
