@@ -70,6 +70,7 @@ export const DataTable = () =>{
         height: 500,
         '& .theme--cell': {
           borderBottom: "none",
+          borderBlockEnd: "none",
         },
       }}
     >
