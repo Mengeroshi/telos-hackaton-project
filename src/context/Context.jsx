@@ -2,17 +2,29 @@ import React from "react";
 import { randomGradientAlpha } from "../utils/randomGradientAlpha";
 import { randomPrice } from "../utils/randomPrice";
 import Web3 from "web3";
+import { abi } from "../utils/abi";
+import { getERCBalance } from "../utils/getERCBalance";
 export const ContextApp = React.createContext();
 
 
-let web3js = new Web3('https://mainnet.telos.net/evm');
+let web3 = new Web3('https://mainnet.telos.net/evm');
+
+const contractAddress = "0xD102cE6A4dB07D247fcc28F366A623Df0938CA9E";
+
+let TLOSAddress = '0xeb29dd1ff741a8529a57cb7900e91cdc01f4f36f';
+
+// web3js.eth.getBlockNumber().then(console.log);
+
+// web3js.eth.getTransactionCount(address).then(console.log);
 
 
-let address = '0xe66ed8d0709f6a3481b40293b03c9512464c2481';
 
-web3js.eth.getBlockNumber().then(console.log);
+const contractObj ={
+  abi: abi,
+  address: contractAddress
+}
 
-web3js.eth.getTransactionCount(address).then(console.log);
+getERCBalance(contractObj, TLOSAddress).then(console.log)
 
 
 
