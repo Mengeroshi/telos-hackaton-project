@@ -1,4 +1,4 @@
-const defiTokens = [
+export const defiTokens = [
   {
     chainId: 40,
     address: "0xD102cE6A4dB07D247fcc28F366A623Df0938CA9E",
@@ -251,9 +251,20 @@ const defiTokens = [
     decimals: 9,
     tags: ["telosevm"],
   },
-];
+]
 
-console.log(defiTokens);
+
+// .reduce(
+//   (obj, item) =>
+//     Object.assign(obj, { [item.symbol]: 
+//       { ["address"]: item.address,
+        
+//       } 
+//     }),
+//   {}
+// );
+
+
 
 
 
