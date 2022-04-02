@@ -28,12 +28,12 @@ const reducerObject = (state, payload) => {
     FETCH_BALANCE:{
       ...state,
       balance: payload,
-      loadingAccount: false,
       error:"",
     },
     FETCH_TOKEN_LIST:{
       ...state,
       tokenList: payload,
+      loadingAccount: false,
     },
     FETCH_DATA_LOADING: {
       ...state,
@@ -43,6 +43,7 @@ const reducerObject = (state, payload) => {
       ...state,
       error: "Invalid Address",
       loadingAccount: false,
+      tokenList:[],
     },
     RESTART_STATE: {
       ...initialState

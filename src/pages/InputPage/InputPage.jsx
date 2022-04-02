@@ -3,47 +3,28 @@ import { ContextApp } from "../../context/Context";
 import styles from "./InputPage.module.css";
 import Typography from "@mui/material/Typography";
 import InputSearch from "../../components/InputSearch/InputSearch.jsx";
-import {useNavigate} from 'react-router-dom';
-import {ReactComponent as Logo} from '../../assets/icons/logoFinal.svg';
+import { useNavigate } from "react-router-dom";
+import { ReactComponent as Logo } from "../../assets/icons/logoFinal.svg";
 import { getERCBalanceList } from "../../utils/webjs/getERCBalanceList";
 import { getTLOSBalance } from "../../utils/webjs/getTLOSBalance";
-
 
 export const InputPage = () => {
   const [state, dispatch] = React.useContext(ContextApp);
   const { accountName, balance, loadingAccount, error } = state;
   let navigate = useNavigate();
 
-  const onWrite = payload => dispatch({ type: "WRITE_ACCOUNT_NAME", payload: payload });
-  const onFetchTokenList = payload => {
+  const onWrite = (payload) =>
+    dispatch({ type: "WRITE_ACCOUNT_NAME", payload: payload });
+  const onFetchTokenList = (payload) => {
     dispatch({ type: "FETCH_TOKEN_LIST", payload: payload });
     //navigate('/portfolio');
-  }
-  const onFetchBalance = payload =>{
-    console.log(payload);
+  };
+  const onFetchBalance = (payload) =>
     dispatch({ type: "FETCH_BALANCE", payload: payload });
-    
-  }
-  const onFetchLoading = () =>  dispatch({ type: "FETCH_DATA_LOADING" });
-  const onFetchError = payload =>dispatch({ type: "FETCH_DATA_ERROR", payload: payload });
 
-  
-  
-  // const fetchData = async (url) => {
-  //   try {
-  //     const response = await fetch(url);
-  //     const dataRes = await response.json();
-
-  //     if (response.status !== 200) {
-  //       return Promise.reject(dataRes.message);
-  //     } else {
-  //       return dataRes;
-  //     }
-  //   } catch (e) {
-  //     return new Error(`ERROR HUMANO ${e}`);
-  //   }
-  // };
-
+  const onFetchLoading = () => dispatch({ type: "FETCH_DATA_LOADING" });
+  const onFetchError = (payload) =>
+    dispatch({ type: "FETCH_DATA_ERROR", payload: payload });
 
   const onHandleChange = (e) => {
     if (e.length > 42) return;
@@ -51,21 +32,20 @@ export const InputPage = () => {
   };
 
   const onHandleClick = () => {
-    
     onFetchLoading();
 
     getTLOSBalance(accountName)
-    .then(
-       (data) => onFetchBalance(data),
-       (error) => onFetchError(error)
-     )
-
-    //fetchData(`${state.url}${accountName}`)
-    // getERCBalanceList(accountName)
-    // .then(
-    //   (data) => onFetchTokenList(data),
-    //   (errorMessage) => onFetchError(errorMessage)
-    // );
+      .then(
+        (data) => onFetchBalance(data),
+        () => onFetchError("Invalid Address")
+      )
+      .then(
+        () => getERCBalanceList(accountName)
+          .then(
+            (data) => onFetchTokenList(data),
+            (errorMessage) => onFetchError(errorMessage)
+        )
+      );
   };
 
   return (
@@ -77,7 +57,7 @@ export const InputPage = () => {
 
         <div className={styles.content}>
           <div>
-            <Logo className={styles.LogoProp}/>
+            <Logo className={styles.LogoProp} />
           </div>
 
           <InputSearch
@@ -93,12 +73,7 @@ export const InputPage = () => {
             paddingTop="20px"
             gutterBottom
           >
-            {loadingAccount
-              ? "Loading..."
-              : error
-              ? error
-              : balance
-            }
+            {loadingAccount ? "Loading..." : error ? error : balance}
           </Typography>
 
           <p className={styles.leyenda}>
@@ -118,3 +93,18 @@ export const InputPage = () => {
     </main>
   );
 };
+
+// const fetchData = async (url) => {
+//   try {
+//     const response = await fetch(url);
+//     const dataRes = await response.json();
+
+//     if (response.status !== 200) {
+//       return Promise.reject(dataRes.message);
+//     } else {
+//       return dataRes;
+//     }
+//   } catch (e) {
+//     return new Error(`ERROR HUMANO ${e}`);
+//   }
+// };
