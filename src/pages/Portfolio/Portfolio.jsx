@@ -10,13 +10,28 @@ import { DataTable } from "../../components/DataTable/DataTable";
 import { ContextApp } from "../../context/Context";
 import { TokenItem } from "../../components/TokenItem/TokenItem";
 import { useFetchTlosPrices } from "../../hooks/useFetchTlosPrices";
-import {useGetCoinGeckoPrices} from '../../hooks/useGetCoinGeckoPrices'; 
+import {useGetCoinGeckoPrices} from '../../hooks/useGetCoinGeckoPrices';
+import { useGetTXs } from "../../hooks/useGetTXs";
 
 export const Portfolio = () => {
   const [state] = React.useContext(ContextApp);
   const {balance, tokenList, accountName} = state;
   const { prices, loadingPrices } = useFetchTlosPrices();
   const {tokensPrices, loadingTokensPrices} = useGetCoinGeckoPrices(tokenList);
+
+  const blocksToQuery = 1000;
+  const {txs, loadingTxs} = useGetTXs(accountName, blocksToQuery);
+
+
+  const soloTXs = txs.map( block =>{
+    const tx = block.transactions.map(tx => { return {...tx, date: block.timestamp}} );
+    
+    return tx
+
+  }).flat()
+
+  
+  // console.log(soloTXs.filter( tx => tx.from === accountName || tx.to === accountName ) );
 
 
 const values = Object.values(tokensPrices).map(item => item.usd);
@@ -49,6 +64,9 @@ const tokensValue = labelsFormatted.map( (token, i) =>{
   return value
 } )
 
+tokensValue.push(lastPrice * balance);
+labelsFormatted.push("TLOS")
+
 
   return (
     <main>
@@ -63,14 +81,15 @@ const tokensValue = labelsFormatted.map( (token, i) =>{
 
               <Grid container className={styles.EstiloPrecio} >
                 <Grid item xs={6} sm={6} md={6} lg={6} xl={6}>
-                  <div>
+                  {/* <div>
                     <span>Portfolio</span>
                     <h1>${netWorth} USD</h1>
-                  </div>
+                  </div> */}
                 </Grid>
                 <Grid item xs={6} sm={6} md={6} lg={6} xl={6}>
                   <div className={styles.EstiloAdd}>
-                    <span>{accountName}</span>
+                  <h3 style={{color:"white"}}> Address</h3>
+                    <h2>{accountName}</h2>
                   </div>
                 </Grid>
               </Grid>
@@ -86,7 +105,13 @@ const tokensValue = labelsFormatted.map( (token, i) =>{
                 </div>
                 <div className={styles.EstiloTabla}>
                   <h2 className={styles.Titulos}>Historial</h2>
-                  {/* <DataTable/> */}
+                  {
+                    loadingTxs 
+                    ?<div> Loading Txs</div> 
+                    : soloTXs.length === 0
+                    ? <div>You don't have tx in the last {blocksToQuery} blocks</div>
+                    : <DataTable txs={soloTXs} tlosPrice={lastPrice}/> 
+                  }
                 </div>
               </Grid>
 
@@ -98,7 +123,7 @@ const tokensValue = labelsFormatted.map( (token, i) =>{
                   <div className={styles.SizeGrafi}>
                   
                     {
-                      loadingPrices
+                      loadingTokensPrices
                       ? <div> loading</div>
                       : (
                         <DoughnutChart

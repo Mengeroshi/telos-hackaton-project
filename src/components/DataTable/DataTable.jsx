@@ -7,7 +7,7 @@ import { timeFormat } from "d3-time-format";
 import { randomGradientAlpha } from "../../utils/randomGradientAlpha";
 import { ReactComponent as TLOSIcon } from '../../assets/icons/TLOS.svg';
 
-const formatDate = timeFormat("%d/%m/%y");
+const formatDate = timeFormat("%H:%M ");
 
 const cellType = (params) =>{
 
@@ -37,32 +37,48 @@ const cellOwners = (params) => {
   );
 };
 
-export const DataTable = () => {
-  const [state] = React.useContext(ContextApp);
-  const { txs, tokens } = state;
+export const DataTable = ({txs, tlosPrice}) => {
+  // const [state] = React.useContext(ContextApp);
+  // const { txs, tokens } = state;
 
-  let object = tokens.reduce(
-    (obj, item) =>
-      Object.assign(obj, { [item.token]: { ["colorList"]: item.colorList } }),
-    {}
-  );
+  // let object = tokens.reduce(
+  //   (obj, item) =>
+  //     Object.assign(obj, { [item.token]: { ["colorList"]: item.colorList } }),
+  //   {}
+  // );
 
   ///console.log(object)
 
+  const rows = txs.map((tx, i) => {
+    const txObj = {
+      id: i,
+      date: formatDate(new Date(tx.date*1000)),
+      assets: "TLOS",
+      owners: {
+        from: tx.from,
+        to: tx.to,
+      },
+      value: {
+        amount: ((+tx.value) / (10 **18)).toFixed(2),
+        ticker: "TLOS",
+      },
+      fee: `${(((tx.gas * (+tx.gasPrice)) / (10 **18)).toFixed(8) *  tlosPrice).toFixed(2)} USD`  ,
+    };
+    return txObj;
+  });
+
+
+
   const coins = (params) => {
     //console.log(params.value)
-    const colorList = object[params?.value]?.colorList || randomGradientAlpha();
-    const gradient = `${colorList[0]}, ${colorList[1]}`;
+    
 
     return (
       <>
         {params.value === "TLOS" 
         ? (<div className={styles.TLOS}><TLOSIcon/></div>
         ) : (
-          <div
-            className={styles.sphere}
-            style={{ background: `linear-gradient(${gradient})` }}
-          >
+          <div className={styles.sphere}>
             <div className={styles.questionMark}>?</div>
           </div>
         )}
@@ -81,28 +97,14 @@ export const DataTable = () => {
       headerAlign: "center",
       renderCell: coins,
     },
-    { field: "type", headerName: "Type", flex: 1,align: "center",headerAlign: "center", renderCell: cellType },
+    // { field: "type", headerName: "Type", flex: 1,align: "center",headerAlign: "center", renderCell: cellType },
     { field: "owners", headerName: "Owners", flex: 1,align: "center",headerAlign: "center", renderCell: cellOwners },
     { field: "value", headerName: "Value", flex: 1,align: "center",headerAlign: "center",  renderCell: cellValue },
+
+    { field: "fee", headerName: "Fee", flex: 1,align: "center",headerAlign: "center", },
   ];
 
-  const rows = txs.map((tx, i) => {
-    const txObj = {
-      id: i,
-      date: formatDate(new Date(tx.date)),
-      assets: tx.ticker,
-      type: tx.type,
-      owners: {
-        from: tx.from,
-        to: tx.to,
-      },
-      value: {
-        amount: (tx.amount).toFixed(2),
-        ticker: tx.ticker,
-      },
-    };
-    return txObj;
-  });
+  
 
   return (
     <Box

@@ -9,8 +9,8 @@ ChartJS.register(ArcElement, Tooltip, Legend);
 
 export const DoughnutChart = ({tokenPrices, labels}) => {
 
-  console.log(labels);
-  console.log(tokenPrices);
+  // console.log(labels);
+  // console.log(tokenPrices);
 
   
 

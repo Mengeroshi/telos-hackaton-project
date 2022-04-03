@@ -1,6 +1,6 @@
 
 import Web3 from "web3";
-let web3 = new Web3('https://rpc1.us.telos.net/evm');
+let web3 = new Web3('https://rpc2.us.telos.net/evm');
 
 export async function getLatestBlocksWithTxs (n) {
   const getBlockNumbers = (min, max) => Array.from({ length: max - min + 1 }, (_, i) => min + i);

@@ -8,6 +8,7 @@
   position: absolute;
   display: flex;
   top: 0;
+  width: 100%;
 
 }
 
@@ -24,3 +25,8 @@
   
 }
 .TLOSIcon *{fill:var(--pinkContrast) ;}
+
+.overlay > h4{
+  color: white;
+  margin-left: auto !important;
+}
