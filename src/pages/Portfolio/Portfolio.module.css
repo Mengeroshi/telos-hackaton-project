@@ -56,12 +56,17 @@ body {
   overflow: auto;
   position: relative;
 }
-.SizeGrafi > .Titulos{
+.SizeGrafi  .tokensWorth{
   position: absolute;
-  top: 50%;
+  top: 55%;
   left: 50%;
   transform: translate(-50%, -50%);
+  z-index: -5;
 }
+.tokensWorth > h2, .tokensWorth > h3{margin: 0; text-align: center;}
+
+
+
 
 .EstiloTokenGrafi {
   background: rgba(245, 56, 158, 0.15);

@@ -124,9 +124,11 @@ export const LineChart = ({loading, dataPrices, amount=1, lastPrice}) => {
           <div>
             <Line data={data} options={options} />
             <div className={styles.overlay}>
-            <TLOSIcon className={styles.TLOSIcon}/>
+              
+              <TLOSIcon className={styles.TLOSIcon}/>
               <h3>TLOS</h3>
               <h3> -${(lastPrice).toFixed(2)}USD  </h3>
+              <h4> Balance-${(amount*lastPrice).toFixed(2)}USD  </h4>
               
             </div>
           </div>

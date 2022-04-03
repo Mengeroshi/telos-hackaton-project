@@ -1,33 +1,21 @@
 import styles from "./TokenItem.module.css";
-import { ReactComponent as TLOSIcon } from '../../assets/icons/TLOS.svg';
+// import { ReactComponent as TLOSIcon } from '../../assets/icons/TLOS.svg';
 
+// const TLOSLogo = () => {
+//   return (
+//     <div className={styles.circle}>
+//       {/* <TLOSIcon className={styles.TLOSIcon}/> */}
+//     </div>
+//   );
+// };
 
-const TLOSLogo = () => {
-  return (
-    <div className={styles.circle}>
-      <TLOSIcon className={styles.TLOSIcon}/>
-    </div>
-  );
-};
-
-export const TokenItem = ({ ticker, amount, gradientList }) => {
-  const gradient = `${gradientList[0]}, ${gradientList[1]}`;
+export const TokenItem = ({ ticker, amount, logo }) => {
 
   return (
     <li className={styles.container}>
-      {ticker === "TLOS" 
-        ?<TLOSLogo/>
-        :(
-          <div
-        className={styles.circle}
-        style={{ background: `linear-gradient(${gradient})` }}
-      >
-        <div className={styles.questionMark}>?</div>
-      </div>
-        )
-      }
+      <div className={styles.circle} style={{backgroundImage:`url(${logo})`}}></div>
+      <div className={styles.amount}>{amount.toFixed(8)}</div>
       <div className={styles.ticker}>{ticker}</div>
-      <div className={styles.amount}>{amount}</div>
     </li>
   );
 };

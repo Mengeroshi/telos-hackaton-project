@@ -9,25 +9,65 @@ import Navbar from "../../components/Nav/Navbar.jsx";
 import { DataTable } from "../../components/DataTable/DataTable";
 import { ContextApp } from "../../context/Context";
 import { TokenItem } from "../../components/TokenItem/TokenItem";
-import { tlosToStart } from "../../utils/tlosToStart";
 import { useFetchTlosPrices } from "../../hooks/useFetchTlosPrices";
+import {useGetCoinGeckoPrices} from '../../hooks/useGetCoinGeckoPrices';
+import { useGetTXs } from "../../hooks/useGetTXs";
 
 export const Portfolio = () => {
   const [state] = React.useContext(ContextApp);
-  const {data, tokens} = state;
-  let tokensSorted = tlosToStart(tokens) || tokens;
+  const {balance, tokenList, accountName} = state;
   const { prices, loadingPrices } = useFetchTlosPrices();
-  const isTelosOnWallet =tokensSorted[0].token === "TLOS";
-  console.log(isTelosOnWallet);
+  const {tokensPrices, loadingTokensPrices} = useGetCoinGeckoPrices(tokenList);
 
-  const TLOSAmount = tokensSorted[0].amount;
-  const lastPrice = prices[prices?.length - 1]?.price || 100;
- 
-  const netWorth = isTelosOnWallet
-    ? (TLOSAmount * lastPrice).toFixed(2)
-    : "No available";
+  const blocksToQuery = 1000;
+  const {txs, loadingTxs} = useGetTXs(accountName, blocksToQuery);
+
+
+  const soloTXs = txs.map( block =>{
+    const tx = block.transactions.map(tx => { return {...tx, date: block.timestamp}} );
+    
+    return tx
+
+  }).flat()
 
   
+  // console.log(soloTXs.filter( tx => tx.from === accountName || tx.to === accountName ) );
+
+
+const values = Object.values(tokensPrices).map(item => item.usd);
+const labels = Object.keys(tokensPrices);
+
+
+  const lastPrice = prices[prices?.length - 1]?.price || 100;
+ 
+  const netWorth = (balance * lastPrice).toFixed(2);
+
+
+  const labelsFormatted  = labels.map(token => 
+    token.replace("telos","Wrapped TLOS")
+    .replace("bitcoin","Wrapped Bitcoin")
+    .replace("matic-network", "Polygon")
+    .replace("usd-coin", "USD Coin")
+    .replace("avalanche-2", "Avalanche")
+    .toLowerCase()
+    .replace(/\s/g, "")
+  )
+
+
+  let  amountsObject = tokenList.reduce((obj, item) => ({...obj, [item.name.toLowerCase().replace(/\s/g, "")]:{
+    ['balance'] : item.balance,
+} }) ,{});
+
+
+const tokensValue = labelsFormatted.map( (token, i) =>{
+  const value = values[i] * amountsObject[token].balance;
+  return value
+} )
+
+tokensValue.push(lastPrice * balance);
+labelsFormatted.push("TLOS")
+
+
   return (
     <main>
       <div>
@@ -41,14 +81,15 @@ export const Portfolio = () => {
 
               <Grid container className={styles.EstiloPrecio} >
                 <Grid item xs={6} sm={6} md={6} lg={6} xl={6}>
-                  <div>
+                  {/* <div>
                     <span>Portfolio</span>
                     <h1>${netWorth} USD</h1>
-                  </div>
+                  </div> */}
                 </Grid>
                 <Grid item xs={6} sm={6} md={6} lg={6} xl={6}>
                   <div className={styles.EstiloAdd}>
-                    <span>{data.account.account_name}</span>
+                  <h3 style={{color:"white"}}> Address</h3>
+                    <h2>{accountName}</h2>
                   </div>
                 </Grid>
               </Grid>
@@ -58,43 +99,66 @@ export const Portfolio = () => {
                   <LineChart
                     loading={loadingPrices}
                     dataPrices={prices}
-                    amount={TLOSAmount}
+                    amount={balance}
                     lastPrice={lastPrice}
                    />
                 </div>
                 <div className={styles.EstiloTabla}>
                   <h2 className={styles.Titulos}>Historial</h2>
-                  <DataTable/>
+                  {
+                    loadingTxs 
+                    ?<div> Loading Txs</div> 
+                    : soloTXs.length === 0
+                    ? <div>You don't have tx in the last {blocksToQuery} blocks</div>
+                    : <DataTable txs={soloTXs} tlosPrice={lastPrice}/> 
+                  }
                 </div>
               </Grid>
 
               <Grid item xs={12} sm={12} md={4.05} lg={4} xl={4}>
-                <div className={styles.EstiloTokenGrafi}>
+                {
+                 Object.keys.length ===0 
+                 ? null
+                 : (<div className={styles.EstiloTokenGrafi}>
                   <div className={styles.SizeGrafi}>
-                  <h2 className={styles.Titulos}>Assets</h2>
-                    <DoughnutChart />
+                  
+                    {
+                      loadingTokensPrices
+                      ? <div> loading</div>
+                      : (
+                        <DoughnutChart
+                        tokenPrices={tokensValue}
+                        labels={labelsFormatted} 
+                    />
+                      )
+                    }
                   </div>
-                </div>
+                </div>) 
+                }
 
-                <div className={styles.EstiloToken}>
-                  <div className={styles.SizeToken}>
+                {
+                  tokenList.length === 0
+                  ? null
+                  :(<div className={styles.EstiloToken}>
+                    <div className={styles.SizeToken}>
                     <h2 className={styles.Titulos}>Tokens</h2>
-                    {/* Loop creado solo para simular un listado de tokens */}
-                    <ul className={styles.TokenList}>
-                    {tokensSorted.map((token, i) => {
-                      return(
-                        <TokenItem 
-                          key={i}
-                          ticker={token.token}
-                          amount={token.amount}
-                          gradientList={token.colorList}
-                        />
-                      ) 
-                    })}
-                    </ul>
-                    
-                  </div>
-                </div>
+                      {/* Loop creado solo para simular un listado de tokens */}
+                      <ul className={styles.TokenList}>
+                      {tokenList.map((token, i) => {
+                        return(
+                          <TokenItem 
+                            key={i}
+                            ticker={token.ticker}
+                            amount={token.balance}
+                            logo={token.logo}
+                          />
+                        ) 
+                      })}
+                      </ul>
+                     
+                    </div>
+                  </div>)
+                }
               </Grid>
 
               <Grid container className={styles.EstiloFooter}>
