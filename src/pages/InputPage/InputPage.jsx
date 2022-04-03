@@ -17,7 +17,7 @@ export const InputPage = () => {
     dispatch({ type: "WRITE_ACCOUNT_NAME", payload: payload });
   const onFetchTokenList = (payload) => {
     dispatch({ type: "FETCH_TOKEN_LIST", payload: payload });
-    //navigate('/portfolio');
+    navigate('/portfolio');
   };
   const onFetchBalance = (payload) =>
     dispatch({ type: "FETCH_BALANCE", payload: payload });

@@ -9,23 +9,16 @@ import Navbar from "../../components/Nav/Navbar.jsx";
 import { DataTable } from "../../components/DataTable/DataTable";
 import { ContextApp } from "../../context/Context";
 import { TokenItem } from "../../components/TokenItem/TokenItem";
-import { tlosToStart } from "../../utils/tlosToStart";
 import { useFetchTlosPrices } from "../../hooks/useFetchTlosPrices";
 
 export const Portfolio = () => {
   const [state] = React.useContext(ContextApp);
-  const {data, tokens} = state;
-  let tokensSorted = tlosToStart(tokens) || tokens;
+  const {balance, tokenList, accountName} = state;
   const { prices, loadingPrices } = useFetchTlosPrices();
-  const isTelosOnWallet =tokensSorted[0].token === "TLOS";
-  console.log(isTelosOnWallet);
 
-  const TLOSAmount = tokensSorted[0].amount;
   const lastPrice = prices[prices?.length - 1]?.price || 100;
  
-  const netWorth = isTelosOnWallet
-    ? (TLOSAmount * lastPrice).toFixed(2)
-    : "No available";
+  const netWorth = (balance * lastPrice).toFixed(2);
 
   
   return (
@@ -48,7 +41,7 @@ export const Portfolio = () => {
                 </Grid>
                 <Grid item xs={6} sm={6} md={6} lg={6} xl={6}>
                   <div className={styles.EstiloAdd}>
-                    <span>{data.account.account_name}</span>
+                    <span>{accountName}</span>
                   </div>
                 </Grid>
               </Grid>
@@ -58,13 +51,13 @@ export const Portfolio = () => {
                   <LineChart
                     loading={loadingPrices}
                     dataPrices={prices}
-                    amount={TLOSAmount}
+                    amount={balance}
                     lastPrice={lastPrice}
                    />
                 </div>
                 <div className={styles.EstiloTabla}>
                   <h2 className={styles.Titulos}>Historial</h2>
-                  <DataTable/>
+                  {/* <DataTable/> */}
                 </div>
               </Grid>
 
@@ -72,29 +65,33 @@ export const Portfolio = () => {
                 <div className={styles.EstiloTokenGrafi}>
                   <div className={styles.SizeGrafi}>
                   <h2 className={styles.Titulos}>Assets</h2>
-                    <DoughnutChart />
+                    {/* <DoughnutChart /> */}
                   </div>
                 </div>
 
-                <div className={styles.EstiloToken}>
-                  <div className={styles.SizeToken}>
-                    <h2 className={styles.Titulos}>Tokens</h2>
-                    {/* Loop creado solo para simular un listado de tokens */}
-                    <ul className={styles.TokenList}>
-                    {tokensSorted.map((token, i) => {
-                      return(
-                        <TokenItem 
-                          key={i}
-                          ticker={token.token}
-                          amount={token.amount}
-                          gradientList={token.colorList}
-                        />
-                      ) 
-                    })}
-                    </ul>
-                    
-                  </div>
-                </div>
+                {
+                  tokenList.length === 0
+                  ? null
+                  :(<div className={styles.EstiloToken}>
+                    <div className={styles.SizeToken}>
+                      <h2 className={styles.Titulos}>Tokens</h2>
+                      {/* Loop creado solo para simular un listado de tokens */}
+                      <ul className={styles.TokenList}>
+                      {tokenList.map((token, i) => {
+                        return(
+                          <TokenItem 
+                            key={i}
+                            ticker={token.ticker}
+                            amount={token.balance}
+                            logo={token.logo}
+                          />
+                        ) 
+                      })}
+                      </ul>
+                      
+                    </div>
+                  </div>)
+                }
               </Grid>
 
               <Grid container className={styles.EstiloFooter}>

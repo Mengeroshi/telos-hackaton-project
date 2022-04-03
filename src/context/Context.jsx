@@ -14,7 +14,6 @@ const initialState = {
   accountName: "",
   balance:0,
   loadingAccount: false,
-  url: "https://telos.caleos.io/v2/state/get_account?account=",
   error: "",
   tokenList: [],
 };

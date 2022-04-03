@@ -33,7 +33,7 @@ export const defiTokens = [
     symbol: "USDC",
     name: "USD Coin",
     decimals: 6,
-    logoURI: "ipfs://QmXfzKRvjZz3u5JRgC4v5mGVbm9ahrUiB4DgzHBsnWbTMM",
+    logoURI: "https://gateway.ipfs.io/ipfs/QmXfzKRvjZz3u5JRgC4v5mGVbm9ahrUiB4DgzHBsnWbTMM",
     tags: ["stablecoin"],
   },
   {
