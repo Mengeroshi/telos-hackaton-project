@@ -1,4 +1,4 @@
-export const defiTokens = [
+ export const defiTokens = [
   {
     chainId: 40,
     address: "0xD102cE6A4dB07D247fcc28F366A623Df0938CA9E",
@@ -40,7 +40,7 @@ export const defiTokens = [
     chainId: 40,
     address: "0xefaeee334f0fd1712f9a8cc375f427d9cdd40d73",
     symbol: "USDT",
-    name: "Tether Stable Coin",
+    name: "Tether",
     logoURI:
       "https://raw.githubusercontent.com/elkfinance/tokens/main/logos/avax/0xc7198437980c041c805A1EDcbA50c1Ce5db95118/logo.png",
     decimals: 6,
@@ -252,6 +252,8 @@ export const defiTokens = [
     tags: ["telosevm"],
   },
 ]
+
+
 
 
 // .reduce(

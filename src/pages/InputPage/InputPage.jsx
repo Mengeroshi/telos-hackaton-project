@@ -23,8 +23,10 @@ export const InputPage = () => {
     dispatch({ type: "FETCH_BALANCE", payload: payload });
 
   const onFetchLoading = () => dispatch({ type: "FETCH_DATA_LOADING" });
-  const onFetchError = (payload) =>
+  const onFetchError = (payload) =>{
+    console.log(payload);
     dispatch({ type: "FETCH_DATA_ERROR", payload: payload });
+  }
 
   const onHandleChange = (e) => {
     if (e.length > 42) return;

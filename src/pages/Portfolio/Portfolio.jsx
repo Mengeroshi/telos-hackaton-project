@@ -10,17 +10,46 @@ import { DataTable } from "../../components/DataTable/DataTable";
 import { ContextApp } from "../../context/Context";
 import { TokenItem } from "../../components/TokenItem/TokenItem";
 import { useFetchTlosPrices } from "../../hooks/useFetchTlosPrices";
+import {useGetCoinGeckoPrices} from '../../hooks/useGetCoinGeckoPrices'; 
 
 export const Portfolio = () => {
   const [state] = React.useContext(ContextApp);
   const {balance, tokenList, accountName} = state;
   const { prices, loadingPrices } = useFetchTlosPrices();
+  const {tokensPrices, loadingTokensPrices} = useGetCoinGeckoPrices(tokenList);
+
+
+const values = Object.values(tokensPrices).map(item => item.usd);
+const labels = Object.keys(tokensPrices);
+
 
   const lastPrice = prices[prices?.length - 1]?.price || 100;
  
   const netWorth = (balance * lastPrice).toFixed(2);
 
-  
+
+  const labelsFormatted  = labels.map(token => 
+    token.replace("telos","Wrapped TLOS")
+    .replace("bitcoin","Wrapped Bitcoin")
+    .replace("matic-network", "Polygon")
+    .replace("usd-coin", "USD Coin")
+    .replace("avalanche-2", "Avalanche")
+    .toLowerCase()
+    .replace(/\s/g, "")
+  )
+
+
+  let  amountsObject = tokenList.reduce((obj, item) => ({...obj, [item.name.toLowerCase().replace(/\s/g, "")]:{
+    ['balance'] : item.balance,
+} }) ,{});
+
+
+const tokensValue = labelsFormatted.map( (token, i) =>{
+  const value = values[i] * amountsObject[token].balance;
+  return value
+} )
+
+
   return (
     <main>
       <div>
@@ -62,19 +91,32 @@ export const Portfolio = () => {
               </Grid>
 
               <Grid item xs={12} sm={12} md={4.05} lg={4} xl={4}>
-                <div className={styles.EstiloTokenGrafi}>
+                {
+                 Object.keys.length ===0 
+                 ? null
+                 : (<div className={styles.EstiloTokenGrafi}>
                   <div className={styles.SizeGrafi}>
-                  <h2 className={styles.Titulos}>Assets</h2>
-                    {/* <DoughnutChart /> */}
+                  
+                    {
+                      loadingPrices
+                      ? <div> loading</div>
+                      : (
+                        <DoughnutChart
+                        tokenPrices={tokensValue}
+                        labels={labelsFormatted} 
+                    />
+                      )
+                    }
                   </div>
-                </div>
+                </div>) 
+                }
 
                 {
                   tokenList.length === 0
                   ? null
                   :(<div className={styles.EstiloToken}>
                     <div className={styles.SizeToken}>
-                      <h2 className={styles.Titulos}>Tokens</h2>
+                    <h2 className={styles.Titulos}>Tokens</h2>
                       {/* Loop creado solo para simular un listado de tokens */}
                       <ul className={styles.TokenList}>
                       {tokenList.map((token, i) => {
@@ -88,7 +130,7 @@ export const Portfolio = () => {
                         ) 
                       })}
                       </ul>
-                      
+                     
                     </div>
                   </div>)
                 }

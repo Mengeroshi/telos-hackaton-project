@@ -10,6 +10,7 @@ export const getERCBalanceList = async (tlosAddress) => {
       ticker: token.symbol,
       decimals: token.decimals,
       img: token.logoURI,
+      name: token.name,
     };
   });
   let promisesList = contractsList.map(

@@ -9,7 +9,8 @@ export async function getERCBalance(contractData, TLOSAddress) {
     return {
       ticker: contractData.ticker,  
       balance:balanceFormatted,
-      logo: contractData.img, 
+      logo: contractData.img,
+      name: contractData.name 
     }
   }
   
