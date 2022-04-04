@@ -17,12 +17,12 @@ export default function DenseAppBar() {
   return (
     <Box sx={{ flexGrow: 1 }}>
       <nav className={styles.navbar}>
-        <Toolbar variant="dense">
+        <Toolbar variant="dense" onClick={onGoHome}sx={{ cursor: "pointer" }}>
           <IconButton
             edge="start"
             color="inherit"
             aria-label="menu"
-            sx={{ mr: 2 }}
+            sx={{ mr: 2,cursor: "pointer" }}
             onClick={onGoHome}
           >
             <Logo className={styles.NavLogo}/>

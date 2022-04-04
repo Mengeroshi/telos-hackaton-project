@@ -70,22 +70,22 @@ export const InputPage = () => {
           />
 
           <Typography
-            sx={{ fontSize: 18 }}
+            sx={{ fontSize: 18, fontFamily: "var(--tipografia)" }}
             color="white"
             paddingTop="20px"
             gutterBottom
           >
-            {loadingAccount ? "Loading..." : error ? error : balance}
+            {loadingAccount ? "Loading..." : error ? error : ''}
           </Typography>
 
           <p className={styles.leyenda}>
-            Connect to your TELOS wallet with one click!
+          Track all your De-Fi moviments on the TELOS EVM in one click
           </p>
         </div>
 
         <div className={styles.pie}>
           <div>
-            <p>About NameApp</p>
+
           </div>
           <div>
             <p>Privacity | Terms</p>

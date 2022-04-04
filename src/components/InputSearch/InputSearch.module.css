@@ -29,6 +29,7 @@
   background-color: rgba(245, 56, 158, 0.15);
   padding-right: 40px;
   color: #fff;
+  font-family: var(--tipografia);
 }
 .inputSearch::placeholder {
   color: rgb(245, 245, 245);
